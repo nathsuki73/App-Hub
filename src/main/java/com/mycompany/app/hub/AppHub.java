@@ -11,6 +11,7 @@ package com.mycompany.app.hub;
 public class AppHub {
 
     public static void main(String[] args) {
-        System.out.println("Hello App-Hub!");
+        LoginForm main = new LoginForm();
+        main.setVisible(true);
     }
 }
