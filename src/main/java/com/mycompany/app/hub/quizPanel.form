@@ -78,10 +78,14 @@
                   <Component id="opt4" min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="133" pref="133" max="-2" attributes="0"/>
+<<<<<<< HEAD
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="submitBtn" min="-2" pref="60" max="-2" attributes="0"/>
                   <Component id="lblTimer" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
+=======
+              <Component id="submitBtn" min="-2" pref="60" max="-2" attributes="0"/>
+>>>>>>> App-Hub/master
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
