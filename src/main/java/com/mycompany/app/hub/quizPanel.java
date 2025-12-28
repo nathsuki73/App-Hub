@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.app.hub;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
@@ -82,53 +81,93 @@ public class quizPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(102, 0, 102));
         setPreferredSize(new java.awt.Dimension(831, 536));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblQuestion.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblQuestion.setForeground(new java.awt.Color(204, 204, 255));
         lblQuestion.setText("This is a sample question");
-        add(lblQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 1130, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 72)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 255));
         jLabel2.setText("Math Quiz");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, 118));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 56)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 255));
         jLabel3.setText("QUESTION:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 350, 112));
 
         opt1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         opt1.setForeground(new java.awt.Color(204, 204, 255));
         opt1.setText("Option 1");
         opt1.setContentAreaFilled(false);
-        add(opt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 520, 440, 50));
 
         opt2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         opt2.setForeground(new java.awt.Color(204, 204, 255));
         opt2.setText("Option 1");
         opt2.setContentAreaFilled(false);
-        add(opt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, 440, 47));
 
         opt3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         opt3.setForeground(new java.awt.Color(204, 204, 255));
         opt3.setText("Option 1");
         opt3.setContentAreaFilled(false);
-        add(opt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 520, 440, 47));
 
         opt4.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         opt4.setForeground(new java.awt.Color(204, 204, 255));
         opt4.setText("Option 1");
         opt4.setContentAreaFilled(false);
-        add(opt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 610, 440, 47));
 
         submitBtn.setBackground(new java.awt.Color(204, 0, 204));
         submitBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         submitBtn.setForeground(new java.awt.Color(204, 204, 255));
         submitBtn.setText("SUBMIT ANSWER");
         submitBtn.addActionListener(this::submitBtnActionPerformed);
-        add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 790, 249, 60));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(420, 420, 420)
+                .addComponent(jLabel2))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(opt1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addComponent(opt3, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(opt2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addComponent(opt4, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(910, 910, 910)
+                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(lblQuestion)))
+                .addGap(142, 142, 142)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(opt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opt3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(opt2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opt4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(133, 133, 133)
+                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
