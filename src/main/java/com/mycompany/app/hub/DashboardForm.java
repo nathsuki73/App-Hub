@@ -20,11 +20,14 @@ public class DashboardForm extends javax.swing.JFrame {
     public DashboardForm() {
         initComponents();
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        currentPanel = jPanel4;
     }
     
-    private void switchPanel(JPanel pnlAdd, JPanel pnlRemove)
+    private JPanel currentPanel;
+    
+    private void switchPanel(JPanel pnlAdd)
     {
-        jPanel1.remove(pnlRemove);
+        jPanel1.remove(currentPanel);
         jPanel1.add(pnlAdd);
         jPanel1.revalidate();
         jPanel1.repaint();
@@ -78,7 +81,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(quizBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dataBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
+                    .addComponent(dataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 238, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -118,13 +121,15 @@ public class DashboardForm extends javax.swing.JFrame {
     private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
         // TODO add your handling code here:
         quizPanel quiz = new quizPanel();
-        switchPanel(quiz, jPanel4);
+        switchPanel(quiz);
+        currentPanel = quiz;
     }//GEN-LAST:event_quizBtnActionPerformed
 
     private void dataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBtnActionPerformed
         // TODO add your handling code here:
         DataVisualization data = new DataVisualization();
-        switchPanel(data, jPanel4);
+        switchPanel(data);
+        currentPanel = data;
     }//GEN-LAST:event_dataBtnActionPerformed
 
     /**
