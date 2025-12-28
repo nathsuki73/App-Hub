@@ -20,11 +20,14 @@ public class DashboardForm extends javax.swing.JFrame {
     public DashboardForm() {
         initComponents();
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        currentPanel = jPanel4;
     }
     
-    private void switchPanel(JPanel pnlAdd, JPanel pnlRemove)
+    private JPanel currentPanel;
+    
+    private void switchPanel(JPanel pnlAdd)
     {
-        jPanel1.remove(pnlRemove);
+        jPanel1.remove(currentPanel);
         jPanel1.add(pnlAdd);
         jPanel1.revalidate();
         jPanel1.repaint();
@@ -43,11 +46,11 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         quizBtn = new javax.swing.JButton();
+        dataBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel2.setBackground(new java.awt.Color(204, 0, 204));
         jPanel2.setLayout(new java.awt.BorderLayout());
@@ -64,21 +67,30 @@ public class DashboardForm extends javax.swing.JFrame {
         quizBtn.setText("Quiz Game");
         quizBtn.addActionListener(this::quizBtnActionPerformed);
 
+        dataBtn.setBackground(new java.awt.Color(153, 0, 153));
+        dataBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        dataBtn.setText(" Data Charts");
+        dataBtn.addActionListener(this::dataBtnActionPerformed);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(quizBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                .addGap(36, 36, 36))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quizBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(175, 175, 175)
                 .addComponent(quizBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.WEST);
@@ -108,8 +120,16 @@ public class DashboardForm extends javax.swing.JFrame {
     private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
         // TODO add your handling code here:
         quizPanel quiz = new quizPanel();
-        switchPanel(quiz, jPanel4);
+        switchPanel(quiz);
+        currentPanel = quiz;
     }//GEN-LAST:event_quizBtnActionPerformed
+
+    private void dataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBtnActionPerformed
+        // TODO add your handling code here:
+        DataVisualization data = new DataVisualization();
+        switchPanel(data);
+        currentPanel = data;
+    }//GEN-LAST:event_dataBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +157,7 @@ public class DashboardForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton dataBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
