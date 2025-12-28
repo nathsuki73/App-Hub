@@ -103,6 +103,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -132,14 +133,14 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1.setText("Login");
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Email");
+        jTextField1.setText("AdminEmail");
 
         jLabel2.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Email");
 
         jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("Password");
+        jTextField2.setText("AdminPassword");
 
         jLabel3.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
