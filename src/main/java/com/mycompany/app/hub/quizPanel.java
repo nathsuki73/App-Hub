@@ -39,7 +39,6 @@ public class quizPanel extends javax.swing.JPanel {
     }
     
     private int currentIndex = 0;
-    private int score = 0;
     
     class quizQuestions {
         String questionText;
@@ -220,7 +219,7 @@ public class quizPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(lblQuestion)))
-                .addGap(100, 100, 100)
+                .addGap(142, 142, 142)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(opt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opt3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -260,7 +259,6 @@ public class quizPanel extends javax.swing.JPanel {
         
         if (selectedOption == q.correctAnswer)
         {
-            score++;
             t.stop();
             MsgAlert("Your Answer is Correct", JOptionPane.INFORMATION_MESSAGE, "Correct");
         }
