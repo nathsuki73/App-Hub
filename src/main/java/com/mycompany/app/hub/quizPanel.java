@@ -6,6 +6,10 @@ package com.mycompany.app.hub;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import java.util.Collections;
+import javax.swing.Timer;
 
 /**
  *
@@ -19,12 +23,15 @@ public class quizPanel extends javax.swing.JPanel {
     public quizPanel() {
         initComponents();
         generateButtonGroup();
-        showQuestion(0);
+        Collections.shuffle(quiz);
+        showQuestion(currentIndex);
+        t.start();
+        updateTimer();
     }
+    private ButtonGroup grp = new ButtonGroup();
     
     private void generateButtonGroup()
     {
-        ButtonGroup grp = new ButtonGroup();
         grp.add(opt1);
         grp.add(opt2);
         grp.add(opt3);
@@ -32,6 +39,7 @@ public class quizPanel extends javax.swing.JPanel {
     }
     
     private int currentIndex = 0;
+    private int score = 0;
     
     class quizQuestions {
         String questionText;
@@ -54,12 +62,61 @@ public class quizPanel extends javax.swing.JPanel {
         opt2.setText(q.options[1]);
         opt3.setText(q.options[2]);
         opt4.setText(q.options[3]);
+        grp.clearSelection();
+        timeRemain = 10;
+        lblTimer.setText("Time Left: " + timeRemain);
+        t.restart();
+    }
+    
+    private void MsgAlert(String msg, int icon, String title)
+    {
+        JOptionPane opt = new JOptionPane();
+        opt.setMessage(msg);
+        opt.setMessageType(icon);
+        JDialog dialog = opt.createDialog(this, title);
+        dialog.setVisible(true);
+                
     }
     
     private ArrayList<quizQuestions> quiz = new ArrayList<>(List.of(
-            new quizQuestions("What is 5 + 5", new String[]{"5", "10", "15", "20"}, 1),
-            new quizQuestions("What is 10 + 10", new String[]{"15", "5", "20", "1"}, 2)
+        new quizQuestions("What is 15 + 27?", new String[]{"32", "42", "45", "38"}, 1),
+        new quizQuestions("What is 12 x 8?", new String[]{"86", "94", "96", "102"}, 2),
+        new quizQuestions("What is 144 / 12?", new String[]{"10", "11", "12", "13"}, 2),
+        new quizQuestions("What is 9 x 7?", new String[]{"63", "56", "72", "64"}, 0),
+        new quizQuestions("What is 150 - 85?", new String[]{"75", "65", "55", "45"}, 1),
+        new quizQuestions("What is 5 cubed (5^3)?", new String[]{"15", "25", "125", "75"}, 2),
+        new quizQuestions("What is the square root of 81?", new String[]{"7", "8", "9", "10"}, 2),
+        new quizQuestions("What is 20% of 200?", new String[]{"20", "40", "50", "30"}, 1),
+        new quizQuestions("What is 11 + 11 + 11?", new String[]{"22", "33", "44", "11"}, 1),
+        new quizQuestions("What is 72 / 9?", new String[]{"6", "7", "8", "9"}, 2),
+        new quizQuestions("What is 13 x 3?", new String[]{"36", "39", "42", "33"}, 1),
+        new quizQuestions("What is 500 / 25?", new String[]{"20", "25", "15", "10"}, 0),
+        new quizQuestions("What is 17 + 19?", new String[]{"34", "36", "38", "32"}, 1),
+        new quizQuestions("What is 100 - 37?", new String[]{"63", "73", "53", "67"}, 0),
+        new quizQuestions("What is 8 x 6?", new String[]{"42", "46", "48", "54"}, 2),
+        new quizQuestions("What is 10 x 10 x 10?", new String[]{"100", "1,000", "10,000", "1,000,000"}, 1),
+        new quizQuestions("What is 1/2 + 1/4?", new String[]{"1/2", "3/4", "1/4", "1/6"}, 1)
     ));
+    
+    private int timeRemain = 11;
+    private Timer t = new Timer(1000, e -> updateTimer());
+    
+    private void updateTimer()
+    {
+        timeRemain--;
+        lblTimer.setText("Time Left: " + timeRemain);
+        
+        if (timeRemain <= 0)
+        {
+            t.stop();
+            MsgAlert("Your Time is Up!", JOptionPane.ERROR_MESSAGE, "Time's Up!");
+            currentIndex++;
+            showQuestion(currentIndex);
+            t.restart();
+            timeRemain = 11;
+        }
+        
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,6 +135,7 @@ public class quizPanel extends javax.swing.JPanel {
         opt3 = new javax.swing.JRadioButton();
         opt4 = new javax.swing.JRadioButton();
         submitBtn = new javax.swing.JButton();
+        lblTimer = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 0, 102));
         setPreferredSize(new java.awt.Dimension(831, 536));
@@ -120,6 +178,10 @@ public class quizPanel extends javax.swing.JPanel {
         submitBtn.setText("SUBMIT ANSWER");
         submitBtn.addActionListener(this::submitBtnActionPerformed);
 
+        lblTimer.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTimer.setForeground(new java.awt.Color(153, 153, 153));
+        lblTimer.setText("Time Left:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,11 +189,6 @@ public class quizPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(420, 420, 420)
                 .addComponent(jLabel2))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(opt1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,8 +200,14 @@ public class quizPanel extends javax.swing.JPanel {
                 .addGap(110, 110, 110)
                 .addComponent(opt4, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(910, 910, 910)
-                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(695, 695, 695)
+                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,14 +229,49 @@ public class quizPanel extends javax.swing.JPanel {
                     .addComponent(opt2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opt4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(133, 133, 133)
-                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
+        quizQuestions q = quiz.get(currentIndex);
+        int selectedOption = 0;
+        
+        if (opt1.isSelected())
+        {
+            selectedOption = 0;
+        }
+        else if (opt2.isSelected())
+        {
+            selectedOption = 1;
+        }
+        else if (opt3.isSelected())
+        {
+            selectedOption = 2;
+        }
+        else if (opt4.isSelected())
+        {
+            selectedOption = 3;
+        }
+        
+        if (selectedOption == q.correctAnswer)
+        {
+            score++;
+            t.stop();
+            MsgAlert("Your Answer is Correct", JOptionPane.INFORMATION_MESSAGE, "Correct");
+        }
+        else
+        {
+            t.stop();
+            MsgAlert("Your Answer is Incorrect", JOptionPane.ERROR_MESSAGE, "Incorrect");
+        }
+        
         currentIndex++;
+        showQuestion(currentIndex);
     }//GEN-LAST:event_submitBtnActionPerformed
 
 
@@ -181,6 +279,7 @@ public class quizPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblQuestion;
+    private javax.swing.JLabel lblTimer;
     private javax.swing.JRadioButton opt1;
     private javax.swing.JRadioButton opt2;
     private javax.swing.JRadioButton opt3;
