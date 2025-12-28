@@ -4,6 +4,8 @@
  */
 package com.mycompany.app.hub;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Tan
@@ -19,6 +21,14 @@ public class DashboardForm extends javax.swing.JFrame {
         initComponents();
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
+    
+    private void switchPanel(JPanel pnlAdd, JPanel pnlRemove)
+    {
+        jPanel1.remove(pnlRemove);
+        jPanel1.add(pnlAdd);
+        jPanel1.revalidate();
+        jPanel1.repaint();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,6 +42,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        quizBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,15 +59,26 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 255, 204));
         jPanel3.setPreferredSize(new java.awt.Dimension(250, 0));
 
+        quizBtn.setBackground(new java.awt.Color(153, 0, 153));
+        quizBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        quizBtn.setText("Quiz Game");
+        quizBtn.addActionListener(this::quizBtnActionPerformed);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(quizBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addGap(36, 36, 36))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(quizBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(297, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.WEST);
@@ -82,6 +104,12 @@ public class DashboardForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
+        // TODO add your handling code here:
+        quizPanel quiz = new quizPanel();
+        switchPanel(quiz, jPanel4);
+    }//GEN-LAST:event_quizBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,5 +141,6 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton quizBtn;
     // End of variables declaration//GEN-END:variables
 }
