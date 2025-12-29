@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.app.hub;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import java.util.Collections;
+import javax.swing.JRadioButton;
 import javax.swing.Timer;
 
 /**
@@ -27,8 +29,17 @@ public class quizPanel extends javax.swing.JPanel {
         showQuestion(currentIndex);
         t.start();
         updateTimer();
+        allButtons = new JRadioButton[]{opt1, opt2, opt3, opt4};
     }
+    
     private ButtonGroup grp = new ButtonGroup();
+    private JRadioButton selectedButton = null;
+    private JRadioButton[] allButtons;
+    private int selectedOption = 0;
+    private int currentIndex = 0;
+    private int timeRemain = 11;
+    private int score = 0;
+    private Timer t = new Timer(1000, e -> updateTimer());
     
     private void generateButtonGroup()
     {
@@ -37,8 +48,6 @@ public class quizPanel extends javax.swing.JPanel {
         grp.add(opt3);
         grp.add(opt4);
     }
-    
-    private int currentIndex = 0;
     
     class quizQuestions {
         String questionText;
@@ -65,6 +74,8 @@ public class quizPanel extends javax.swing.JPanel {
         timeRemain = 10;
         lblTimer.setText("Time Left: " + timeRemain);
         t.restart();
+        nextBtn.setEnabled(false);
+        
     }
     
     private void MsgAlert(String msg, int icon, String title)
@@ -96,9 +107,6 @@ public class quizPanel extends javax.swing.JPanel {
         new quizQuestions("What is 10 x 10 x 10?", new String[]{"100", "1,000", "10,000", "1,000,000"}, 1),
         new quizQuestions("What is 1/2 + 1/4?", new String[]{"1/2", "3/4", "1/4", "1/6"}, 1)
     ));
-    
-    private int timeRemain = 11;
-    private Timer t = new Timer(1000, e -> updateTimer());
     
     private void updateTimer()
     {
@@ -135,6 +143,7 @@ public class quizPanel extends javax.swing.JPanel {
         opt4 = new javax.swing.JRadioButton();
         submitBtn = new javax.swing.JButton();
         lblTimer = new javax.swing.JLabel();
+        nextBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 0, 102));
         setPreferredSize(new java.awt.Dimension(831, 536));
@@ -181,6 +190,12 @@ public class quizPanel extends javax.swing.JPanel {
         lblTimer.setForeground(new java.awt.Color(153, 153, 153));
         lblTimer.setText("Time Left:");
 
+        nextBtn.setBackground(new java.awt.Color(204, 0, 204));
+        nextBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        nextBtn.setForeground(new java.awt.Color(204, 204, 255));
+        nextBtn.setText("NEXT QUESTION");
+        nextBtn.addActionListener(this::nextBtnActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -200,24 +215,28 @@ public class quizPanel extends javax.swing.JPanel {
                 .addComponent(opt4, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(695, 695, 695)
-                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
                         .addComponent(lblQuestion)))
                 .addGap(142, 142, 142)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,32 +246,62 @@ public class quizPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(opt2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opt4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(133, 133, 133)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(125, 125, 125)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
         quizQuestions q = quiz.get(currentIndex);
-        int selectedOption = 0;
+        
+        if(!opt1.isSelected() && !opt2.isSelected() && !opt3.isSelected() && !opt4.isSelected())
+        {
+            for (JRadioButton j : allButtons)
+            {
+                j.setOpaque(true);
+                j.setEnabled(false);
+                j.setBackground(Color.RED);
+            }
+            submitBtn.setEnabled(false);
+            nextBtn.setEnabled(true);
+        }
+        
         
         if (opt1.isSelected())
         {
-            selectedOption = 0;
+            selectedButton = opt1;
         }
         else if (opt2.isSelected())
         {
-            selectedOption = 1;
+            selectedButton = opt2;
         }
         else if (opt3.isSelected())
         {
-            selectedOption = 2;
+            selectedButton = opt3;
         }
         else if (opt4.isSelected())
+        {
+            selectedButton = opt4;
+        }
+        
+        if (selectedButton == opt1)
+        {
+            selectedOption = 0;
+        }
+        else if (selectedButton == opt2)
+        {
+            selectedOption = 1;
+        }
+        else if (selectedButton == opt3)
+        {
+            selectedOption = 2;
+        }
+        else if (selectedButton == opt4)
         {
             selectedOption = 3;
         }
@@ -260,17 +309,44 @@ public class quizPanel extends javax.swing.JPanel {
         if (selectedOption == q.correctAnswer)
         {
             t.stop();
-            MsgAlert("Your Answer is Correct", JOptionPane.INFORMATION_MESSAGE, "Correct");
+            score++;
+            selectedButton.setOpaque(true);
+            selectedButton.setBackground(Color.GREEN);
+            //MsgAlert("Your Answer is Correct", JOptionPane.INFORMATION_MESSAGE, "Correct");
         }
         else
         {
             t.stop();
-            MsgAlert("Your Answer is Incorrect", JOptionPane.ERROR_MESSAGE, "Incorrect");
+            selectedButton.setOpaque(true);
+            selectedButton.setBackground(Color.RED);
+            //MsgAlert("Your Answer is Incorrect", JOptionPane.ERROR_MESSAGE, "Incorrect");
         }
         
+        opt1.setEnabled(false);
+        opt2.setEnabled(false);
+        opt3.setEnabled(false);
+        opt4.setEnabled(false);
+        submitBtn.setEnabled(false);
+        nextBtn.setEnabled(true);
+    }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
+        // TODO add your handling code here:
+        for (JRadioButton j : allButtons)
+        {
+            j.setOpaque(false);
+        }
+        //selectedButton.setOpaque(false);
+        submitBtn.setEnabled(true);
+        nextBtn.setEnabled(false);
+        opt1.setEnabled(true);
+        opt2.setEnabled(true);
+        opt3.setEnabled(true);
+        opt4.setEnabled(true);
         currentIndex++;
         showQuestion(currentIndex);
-    }//GEN-LAST:event_submitBtnActionPerformed
+        selectedButton = null;
+    }//GEN-LAST:event_nextBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -278,6 +354,7 @@ public class quizPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblQuestion;
     private javax.swing.JLabel lblTimer;
+    private javax.swing.JButton nextBtn;
     private javax.swing.JRadioButton opt1;
     private javax.swing.JRadioButton opt2;
     private javax.swing.JRadioButton opt3;
