@@ -384,6 +384,7 @@ public class LoginForm extends javax.swing.JFrame {
             this.setVisible(false);
         } else {
             if (LoginSecurity.attempts == 0) {
+                jLabel3.setText("Invalid Password or Email!");
                 jLabel5.setText("The program will close in 3 seconds.");
                 
                 // Create a timer that waits 3000ms (3 seconds) then runs once
@@ -393,11 +394,16 @@ public class LoginForm extends javax.swing.JFrame {
                 timer.start(); // Start the countdown
             } else {
                 jLabel3.setText("Invalid Password or Email!");
+
+                
                 jLabel2.setText(LoginSecurity.attempts + " Attempts Remaining");
             }
             
             
         }
+        if (txtEmail.getText().equals("Enter your email") || new String(jPasswordField1.getPassword()).equals("Enter your Password")) {
+                    jLabel3.setText("Please fill all fields");
+                }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
