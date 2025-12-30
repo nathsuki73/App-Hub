@@ -39,6 +39,7 @@ public class SignupForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         initCustomFont();
         initCustomizations();
+        jPanel1.requestFocusInWindow();
     }
     
     public void initCustomizations() {
