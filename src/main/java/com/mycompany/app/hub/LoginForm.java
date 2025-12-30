@@ -59,8 +59,13 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2.setFont(myFont.deriveFont(Font.PLAIN ,12f));
         jLabel2.setForeground(customPurple);
         
+        
+        
         jLabel4.setFont(myFont.deriveFont(Font.PLAIN ,12f));
         jLabel4.setForeground(customPurple);
+        
+        jLabel5.setFont(myFont.deriveFont(Font.PLAIN ,12f));
+        jLabel5.setForeground(Color.RED);
         
         jLabel3.setFont(myFont.deriveFont(Font.PLAIN ,12f));
         jLabel3.setForeground(Color.RED);
@@ -200,6 +205,7 @@ public class LoginForm extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -269,8 +275,6 @@ public class LoginForm extends javax.swing.JFrame {
             .addGap(0, 1, Short.MAX_VALUE)
         );
 
-        jLabel2.setText("2 Attempts Remaining");
-
         jPasswordField1.setBackground(new java.awt.Color(251, 194, 255));
         jPasswordField1.setText("AdminPassword");
         jPasswordField1.setBorder(null);
@@ -310,13 +314,16 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(33, 33, 33))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(341, 341, 341)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(341, 341, 341)
-                        .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(200, 200, 200)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -328,12 +335,11 @@ public class LoginForm extends javax.swing.JFrame {
                             .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(292, 292, 292)
+                        .addComponent(jLabel5)))
                 .addContainerGap(199, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(33, 33, 33))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,11 +360,13 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(23, 23, 23)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
 
         jPanel1.add(jPanel2, new java.awt.GridBagConstraints());
@@ -374,7 +382,22 @@ public class LoginForm extends javax.swing.JFrame {
             DashboardForm dashboard = new DashboardForm();
             dashboard.setVisible(true);
             this.setVisible(false);
-        } else jLabel3.setText("Invalid Password or Email!");
+        } else {
+            if (LoginSecurity.attempts == 0) {
+                jLabel5.setText("The program will close in 3 seconds.");
+                
+                // Create a timer that waits 3000ms (3 seconds) then runs once
+                javax.swing.Timer timer = new javax.swing.Timer(3000, e -> System.exit(0));
+
+                timer.setRepeats(false); // Make sure it only happens once
+                timer.start(); // Start the countdown
+            } else {
+                jLabel3.setText("Invalid Password or Email!");
+                jLabel2.setText(LoginSecurity.attempts + " Attempts Remaining");
+            }
+            
+            
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
@@ -482,6 +505,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
