@@ -4,6 +4,13 @@
  */
 package com.mycompany.app.hub;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -23,14 +30,100 @@ public class DashboardForm extends javax.swing.JFrame {
         currentPanel = jPanel4;
     }
     
-    private JPanel currentPanel;
+    public JPanel currentPanel;
     
-    private void switchPanel(JPanel pnlAdd)
+    public void switchPanel(JPanel pnlAdd)
     {
         jPanel1.remove(currentPanel);
         jPanel1.add(pnlAdd);
+        currentPanel = pnlAdd;
         jPanel1.revalidate();
         jPanel1.repaint();
+    }
+    
+    class RoundedPanel extends JPanel 
+    {
+        private int radius;
+        
+        public RoundedPanel(int radius)
+        {
+            this.radius = radius;
+            setOpaque(false);
+        }
+        
+        @Override
+        protected void paintComponent(Graphics g)
+        {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setColor(getBackground());
+            g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
+            g2.dispose();
+            super.paintComponent(g);
+        }
+    }
+    
+    class RoundedButton extends JButton {
+        private int radius;
+        private Color normalColor = new Color (187, 114, 195);
+        private Color hoverColor = Color.WHITE;
+        private Color originalTextColor;
+        
+        public RoundedButton(String text, int radius)
+        {
+            super(text);
+            this.radius = radius;
+            this.originalTextColor = Color.WHITE;
+            
+            setContentAreaFilled(false);
+            setFocusPainted(false);
+            setBorderPainted(false);
+            setOpaque(false);
+            
+            setBackground(normalColor);
+            setForeground(originalTextColor);
+            
+            addMouseListener(new MouseAdapter() 
+            {
+                @Override
+                public void mouseEntered(MouseEvent e)
+                {
+                    if (!isEnabled()) return;
+                    setBackground(hoverColor);
+                    setForeground(normalColor);
+                }
+                
+                @Override
+                public void mouseExited(MouseEvent e)
+                {
+                    if (!isEnabled()) return;
+                    setBackground(normalColor);
+                    setForeground(originalTextColor);
+                }
+            });
+        }
+        
+        @Override
+        protected void paintComponent(Graphics g)
+        {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            
+            if (!isEnabled())
+            {
+                g2.setColor(Color.LIGHT_GRAY);
+            }
+            else
+            {
+                g2.setColor(getBackground());
+            }
+            //g2.setColor(getBackground());
+            g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
+            
+            g2.dispose();
+            
+            super.paintComponent(g);
+        }
     }
 
     /**
@@ -44,9 +137,9 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        quizBtn = new javax.swing.JButton();
-        dataBtn = new javax.swing.JButton();
+        jPanel3 = new RoundedPanel(50);
+        quizBtn = new RoundedButton("Quiz Game",30);
+        dataBtn = new RoundedButton("Data Charts",30);
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,7 +188,7 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.WEST);
 
-        jPanel4.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel4.setBackground(new java.awt.Color(102, 0, 102));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -119,9 +212,12 @@ public class DashboardForm extends javax.swing.JFrame {
 
     private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
         // TODO add your handling code here:
-        quizPanel quiz = new quizPanel();
-        switchPanel(quiz);
-        currentPanel = quiz;
+        //quizPanel quiz = new quizPanel();
+        //switchPanel(quiz);
+        //currentPanel = quiz;
+        quizMainPanel quizMain = new quizMainPanel();
+        switchPanel(quizMain);
+        currentPanel = quizMain;
     }//GEN-LAST:event_quizBtnActionPerformed
 
     private void dataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBtnActionPerformed
@@ -161,7 +257,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JButton quizBtn;
+    public javax.swing.JPanel jPanel4;
+    public javax.swing.JButton quizBtn;
     // End of variables declaration//GEN-END:variables
 }
