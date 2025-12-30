@@ -38,9 +38,21 @@ public class LoginForm extends javax.swing.JFrame {
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         initCustomFont();
+        initCustomizations();
+        jPanel1.requestFocusInWindow();
     }
     
+    public void initCustomizations() {
+        
+        txtEmail.setForeground(new java.awt.Color(150, 150, 150));
+        txtEmail.setText("Enter your email");
+        
+        jPasswordField1.setEchoChar((char)0); // Stop showing dots for the placeholder text
+        jPasswordField1.setForeground(new java.awt.Color(150, 150, 150));
+        jPasswordField1.setText("Enter your Password");
+    }
 
+    
     public void initCustomFont() {
     try {
         InputStream is = getClass().getResourceAsStream("/fonts/inter.ttf"); 
@@ -227,7 +239,6 @@ public class LoginForm extends javax.swing.JFrame {
 
         txtEmail.setBackground(new java.awt.Color(251, 194, 255));
         txtEmail.setForeground(new java.awt.Color(0, 0, 0));
-        txtEmail.setText("AdminEmail");
         txtEmail.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -276,7 +287,6 @@ public class LoginForm extends javax.swing.JFrame {
         );
 
         jPasswordField1.setBackground(new java.awt.Color(251, 194, 255));
-        jPasswordField1.setText("AdminPassword");
         jPasswordField1.setBorder(null);
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
