@@ -64,6 +64,10 @@ public class LoginForm extends javax.swing.JFrame {
         txtPass.setFont(myFont.deriveFont(Font.PLAIN, 16f));
         
         jButton1.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        
+        jPasswordField1.setFont(myFont.deriveFont(Font.PLAIN, 16f));
+        jCheckBox1.setFont(myFont.deriveFont(Font.PLAIN, 12f));
+        
     } catch (FontFormatException e) {
         System.err.println("The font file is corrupted or not a valid TTF.");
         e.printStackTrace();
@@ -188,6 +192,8 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -275,6 +281,26 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel2.setText("2 Attempts Remaining");
 
+        jPasswordField1.setBackground(new java.awt.Color(251, 194, 255));
+        jPasswordField1.setText("AdminPassword");
+        jPasswordField1.setBorder(null);
+        jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordField1FocusLost(evt);
+            }
+        });
+
+        jCheckBox1.setBackground(new java.awt.Color(251, 194, 255));
+        jCheckBox1.setForeground(new java.awt.Color(0, 0, 0));
+        jCheckBox1.setText("Show Password");
+        jCheckBox1.setBorder(null);
+        jCheckBox1.setContentAreaFilled(false);
+        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox1.addActionListener(this::jCheckBox1ActionPerformed);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -289,12 +315,16 @@ public class LoginForm extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(200, 200, 200)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox1)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE))))))
                 .addContainerGap(199, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -306,13 +336,17 @@ public class LoginForm extends javax.swing.JFrame {
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addGap(64, 64, 64)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox1)
+                .addGap(23, 23, 23)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel2)
                 .addGap(65, 65, 65))
         );
@@ -358,20 +392,50 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
-        if (txtPass.getText().equals("Enter your email")) {
-        txtPass.setText("");
-        // Change to a bright color for actual typing
-        txtPass.setForeground(java.awt.Color.BLACK); 
-    }
+        
     }//GEN-LAST:event_txtPassFocusGained
 
     private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
-        if (txtPass.getText().isEmpty()) {
-        // Change back to a dim color for the placeholder
-        txtPass.setForeground(new java.awt.Color(150, 150, 150)); 
-        txtPass.setText("Enter your email");
-    }
+        
     }//GEN-LAST:event_txtPassFocusLost
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        
+        if (new String(jPasswordField1.getPassword()).equals("Enter your Password")) return;
+        if (!jCheckBox1.isSelected()) {
+            jPasswordField1.setEchoChar('•');
+        } else {
+            jPasswordField1.setEchoChar((char)0);
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
+        String currentText = new String(jPasswordField1.getPassword());
+
+        if (currentText.equals("Enter your Password")) {
+            jPasswordField1.setText("");
+            jPasswordField1.setForeground(java.awt.Color.BLACK); 
+
+            if (!jCheckBox1.isSelected()) {
+                jPasswordField1.setEchoChar('•');
+            } else {
+                jPasswordField1.setEchoChar((char)0);
+            }
+        }
+    }//GEN-LAST:event_jPasswordField1FocusGained
+
+    private void jPasswordField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusLost
+        // Get the password as a char array
+        char[] password = jPasswordField1.getPassword();
+
+        // Check if the array length is 0 (empty field)
+        if (password.length == 0) { 
+            // Reset the placeholder look
+            jPasswordField1.setEchoChar((char)0); // Stop showing dots for the placeholder text
+            jPasswordField1.setForeground(new java.awt.Color(150, 150, 150)); 
+            jPasswordField1.setText("Enter your Password");
+        }
+    }//GEN-LAST:event_jPasswordField1FocusLost
 
     /**
      * @param args the command line arguments
@@ -400,12 +464,14 @@ public class LoginForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPass;
     // End of variables declaration//GEN-END:variables
