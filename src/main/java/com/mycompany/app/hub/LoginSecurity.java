@@ -1,5 +1,7 @@
 package com.mycompany.app.hub;
 
+import java.util.ArrayList;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -13,42 +15,38 @@ public class LoginSecurity {
 
     // User class
     public static class User {
-        private String email;
-        private String password;
+        private String firstName, lastName, email, password;
         private int accessLevel;
 
-        public User(String email, String password, int accessLevel) {
+        public User(String firstName, String lastName, String email, String password, int accessLevel) {
+            this.firstName = firstName;
+            this.lastName = lastName;
             this.email = email;
             this.password = password;
             this.accessLevel = accessLevel;
         }
-
+        
         // Getters
         public String getEmail() { return email; }
         public String getPassword() { return password; }
-        public int getAccessLevel() { return accessLevel; }
-
-        // Optional: setters if needed
-        public void setPassword(String password) { this.password = password; }
     }
 
-    // Array of users
-    private User[] users;
+    private ArrayList<User> users = new ArrayList<>();
 
     // Tracks login attempts
     public static int attempts = 3;
 
     // Constructor
     public LoginSecurity() {
-        // Initialize users array
-        users = new User[] {
-            new User("AdminEmail", "AdminPassword", 0), // accessLevel 0 = admin
-            new User("UserEmail", "UserPassword", 1), // accessLevel 1 = user
-            new User("GuestEmail", "GuestPassword", 2) // accessLevel 2 = guest
-        };
+        users.add(new User("Admin", "User", "AdminEmail", "AdminPassword", 0));
+        users.add(new User("Standard", "User", "UserEmail", "UserPassword", 1));
     }
 
-    // Check login method
+    public void signup(String fName, String lName, String email, String pass, int level) {
+        users.add(new User(fName, lName, email, pass, level));
+    }
+    
+    
     public User login(String email, String password) {
         if (attempts <= 0) {
             System.out.println("No login attempts left.");
@@ -67,9 +65,6 @@ public class LoginSecurity {
         return null;
     }
 
-    // Getter for users array
-    public User[] getUsers() {
-        return users;
-    }
+    
 }
 
