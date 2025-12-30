@@ -92,7 +92,9 @@ public class SignupForm extends javax.swing.JFrame {
         txtPassConfirm.setFont(myFont.deriveFont(Font.PLAIN, 16f));
         txtPass.setFont(myFont.deriveFont(Font.PLAIN, 16f));
         jCheckBox1.setFont(myFont.deriveFont(Font.PLAIN, 12f));
-        
+        jLabel2.setFont(myFont.deriveFont(Font.PLAIN, 12f));
+        jLabel2.setForeground(Color.RED);
+
         jComboBox1.setFont(myFont.deriveFont(Font.PLAIN, 12f));
         
         
@@ -228,6 +230,7 @@ public class SignupForm extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -424,22 +427,20 @@ public class SignupForm extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(200, 200, 200)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                             .addComponent(txtPassConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
-                                .addComponent(txtPass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE))
-                                .addComponent(jCheckBox1))
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -476,10 +477,14 @@ public class SignupForm extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 82, Short.MAX_VALUE)
+                        .addComponent(jLabel4))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
         );
 
@@ -559,11 +564,89 @@ public class SignupForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPassConfirmFocusGained
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        LoginSecurity.User loggedInUser = login.login(txtFirstName.getText(), new String(txtPassConfirm.getPassword()));
-        if (loggedInUser != null) {
-            DashboardForm dashboard = new DashboardForm();
-            dashboard.setVisible(true);
-            this.setVisible(false);
+    // 1. Get values from fields
+        String fName = txtFirstName.getText().trim();
+        String lName = txtLastName.getText().trim();
+        String email = txtEmail.getText().trim();
+
+        // Retrieve passwords as Strings for comparison
+        String pass = new String(txtPass.getPassword());
+        String confirmPass = new String(txtPassConfirm.getPassword());
+
+        // 2. Get Access Level from ComboBox
+        String selectedLevel = jComboBox1.getSelectedItem().toString();
+        int accessLevel = selectedLevel.equals("Admin") ? 0 : selectedLevel.equals("User") ? 1 : 2;
+
+        // 3. Validation Logic
+        String errorMsg = "<html>";
+        boolean hasError = false;
+
+        // Empty Field Check
+        if (fName.equals("First Name") || email.equals("Enter your email") || pass.equals("Enter your Password") || confirmPass.equals("Confirm your Password") ) {
+            errorMsg += "• Please fill all fields<br>";
+            hasError = true;
+        }
+
+        
+        String emailPattern = "^[A-Za-z0-9+_.-]+@(.+)$";
+        if (!email.equals("Enter your email") && !email.matches(emailPattern)) {
+            errorMsg += "• Please enter a valid email address<br>";
+            hasError = true;
+}
+
+        // Password Match Check
+        if (!pass.equals(confirmPass)) {
+            errorMsg += "• Passwords do not match<br>";
+            hasError = true;
+        }
+
+        // 1. Check for Length (8+ characters)
+        if (pass.length() < 8) {
+            errorMsg += "• Password must be at least 8 characters long<br>";
+            hasError = true;
+        }
+
+        // 2. Check for Uppercase letter
+        if (!pass.matches(".*[A-Z].*")) {
+            errorMsg += "• Include at least one uppercase letter (A-Z)<br>";
+            hasError = true;
+        }
+
+        // 3. Check for Lowercase letter
+        if (!pass.matches(".*[a-z].*")) {
+            errorMsg += "• Include at least one lowercase letter (a-z)<br>";
+            hasError = true;
+        }
+
+        // 4. Check for Number
+        if (!pass.matches(".*[0-9].*")) {
+            errorMsg += "• Include at least one number (0-9)<br>";
+            hasError = true;
+        }
+
+        // 4. Output Result
+        if (hasError) {
+            errorMsg += "</html>";
+            jLabel2.setForeground(java.awt.Color.RED);
+            jLabel2.setText(errorMsg);
+        } else {
+            // Success: Save user to your LoginSecurity instance
+            login.signup(fName, lName, email, pass, accessLevel);
+
+            jLabel2.setForeground(new java.awt.Color(0, 150, 0));
+            jLabel2.setText("<html>Registration Successful!<br>Opening Login...</html>");
+
+            // 1. Create the timer object first
+            javax.swing.Timer timer = new javax.swing.Timer(2000, e -> {
+                this.dispose();
+                new LoginForm().setVisible(true);
+            });
+
+            // 2. DISABLE repeating so it only runs once
+            timer.setRepeats(false);
+
+            // 3. Start it
+            timer.start();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -673,6 +756,7 @@ public class SignupForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
