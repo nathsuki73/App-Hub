@@ -31,7 +31,7 @@ public class LoginSecurity {
         public String getPassword() { return password; }
     }
 
-    private ArrayList<User> users = new ArrayList<>();
+    private static ArrayList<User> users = new ArrayList<>();
 
     // Tracks login attempts
     public static int attempts = 3;
