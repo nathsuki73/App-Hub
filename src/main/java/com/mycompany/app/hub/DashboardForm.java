@@ -256,6 +256,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel5 = new RoundedPanel(50);
         jLabel3 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -372,12 +373,28 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         jPanel5.setBackground(new java.awt.Color(90, 31, 97));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 24, 0, 20));
         jPanel5.setPreferredSize(new java.awt.Dimension(1101, 50));
-        jPanel5.setLayout(new java.awt.BorderLayout());
+        jPanel5.setLayout(new java.awt.BorderLayout(20, 0));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Dashboard");
         jPanel5.add(jLabel3, java.awt.BorderLayout.CENTER);
+
+        jToggleButton1.setBackground(new java.awt.Color(90, 31, 97));
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/menu.png"))); // NOI18N
+        jToggleButton1.setBorder(null);
+        jToggleButton1.setBorderPainted(false);
+        jToggleButton1.setContentAreaFilled(false);
+        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jToggleButton1.setFocusPainted(false);
+        jToggleButton1.setMaximumSize(new java.awt.Dimension(30, 30));
+        jToggleButton1.setMinimumSize(new java.awt.Dimension(30, 30));
+        jToggleButton1.setPreferredSize(new java.awt.Dimension(30, 30));
+        jToggleButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/menu.png"))); // NOI18N
+        jToggleButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/menu.png"))); // NOI18N
+        jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
+        jPanel5.add(jToggleButton1, java.awt.BorderLayout.LINE_START);
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
@@ -432,6 +449,15 @@ public class DashboardForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        if (jToggleButton1.isSelected()) {
+            jPanel3.setVisible(false);
+        } else {
+            jPanel3.setVisible(true);
+
+        }
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -472,5 +498,6 @@ public class DashboardForm extends javax.swing.JFrame {
     public javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
