@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -49,7 +50,11 @@ public class DashboardForm extends javax.swing.JFrame {
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(myFont);
- 
+
+        jLabel3.setFont(myFont.deriveFont(Font.PLAIN ,24f));
+        jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
+
+        
         btnChatbot.setFont(myFont.deriveFont(Font.PLAIN, 20f));
         btnCredits.setFont(myFont.deriveFont(Font.PLAIN, 20f));
         btnDash.setFont(myFont.deriveFont(Font.PLAIN, 20f));
@@ -366,27 +371,13 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
 
-        jPanel5.setBackground(new java.awt.Color(251, 194, 255));
+        jPanel5.setBackground(new java.awt.Color(90, 31, 97));
         jPanel5.setPreferredSize(new java.awt.Dimension(1101, 50));
+        jPanel5.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setText("Welcome Mango, Graham");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(518, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(445, 445, 445))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Dashboard");
+        jPanel5.add(jLabel3, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
@@ -398,7 +389,9 @@ public class DashboardForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizActionPerformed
-        // TODO add your handling code here:
+        jLabel3.setText("Quiz");
+        
+// TODO add your handling code here:
         //quizPanel quiz = new quizPanel();
         //switchPanel(quiz);
         //currentPanel = quiz;
@@ -408,7 +401,9 @@ public class DashboardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuizActionPerformed
 
     private void btnDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataActionPerformed
-        // TODO add your handling code here:
+        jLabel3.setText("Data Visualization");
+        
+// TODO add your handling code here:
         DataVisualization data = new DataVisualization();
         switchPanel(data);
         currentPanel = data;
@@ -421,11 +416,12 @@ public class DashboardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashActionPerformed
-        // TODO add your handling code here:
+        jLabel3.setText("Dashboard");
     }//GEN-LAST:event_btnDashActionPerformed
 
     private void btnChatbotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatbotActionPerformed
-        // TODO add your handling code here:
+        jLabel3.setText("Chatbot");
+
     }//GEN-LAST:event_btnChatbotActionPerformed
 
     private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
