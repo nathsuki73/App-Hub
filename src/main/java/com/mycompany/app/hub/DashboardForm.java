@@ -137,8 +137,11 @@ public class DashboardForm extends javax.swing.JFrame {
     
     class RoundedButton extends JButton {
         private int radius;
+//        private Color normalColor = new Color (187, 114, 195);
+        private Color hoverColor  = new Color (90,31,97);
+//        private Color hoverColor = Color.WHITE;
         private Color normalColor = new Color (187, 114, 195);
-        private Color hoverColor = Color.WHITE;
+
         private Color originalTextColor;
         
         public RoundedButton(String text, int radius)
@@ -162,7 +165,6 @@ public class DashboardForm extends javax.swing.JFrame {
                 {
                     if (!isEnabled()) return;
                     setBackground(hoverColor);
-                    setForeground(normalColor);
                 }
                 
                 @Override
@@ -170,7 +172,6 @@ public class DashboardForm extends javax.swing.JFrame {
                 {
                     if (!isEnabled()) return;
                     setBackground(normalColor);
-                    setForeground(originalTextColor);
                 }
             });
         }
@@ -197,7 +198,6 @@ public class DashboardForm extends javax.swing.JFrame {
                 {
                     if (!isEnabled()) return;
                     setBackground(hoverColor);
-                    setForeground(normalColor);
                 }
                 
                 @Override
@@ -205,7 +205,6 @@ public class DashboardForm extends javax.swing.JFrame {
                 {
                     if (!isEnabled()) return;
                     setBackground(normalColor);
-                    setForeground(originalTextColor);
                 }
             });
         }
@@ -251,7 +250,7 @@ public class DashboardForm extends javax.swing.JFrame {
         btnDash = new RoundedButton("Quiz Game",30);
         btnChatbot = new RoundedButton("Quiz Game",30);
         btnCredits = new RoundedButton("Data Charts",30);
-        btnExit = new RoundedButton("Exit",30, new Color(251,194,255));
+        btnExit = new RoundedButton("Exit",30, new Color(255,102,128));
         jPanel4 = new RoundedPanel(50);
         jPanel6 = new javax.swing.JPanel();
         jPanel5 = new RoundedPanel(50);
@@ -273,44 +272,65 @@ public class DashboardForm extends javax.swing.JFrame {
 
         btnQuiz.setBackground(new java.awt.Color(187, 114, 195));
         btnQuiz.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnQuiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SVGRepo_iconCarrier.png"))); // NOI18N
         btnQuiz.setText("Quiz Game");
         btnQuiz.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnQuiz.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnQuiz.setIconTextGap(20);
         btnQuiz.addActionListener(this::btnQuizActionPerformed);
 
         btnData.setBackground(new java.awt.Color(187, 114, 195));
         btnData.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame (7).png"))); // NOI18N
         btnData.setText(" Data Charts");
         btnData.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnData.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnData.setIconTextGap(20);
         btnData.addActionListener(this::btnDataActionPerformed);
 
         btnLogout.setBackground(new java.awt.Color(187, 114, 195));
         btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame (9).png"))); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLogout.setIconTextGap(20);
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
 
         btnDash.setBackground(new java.awt.Color(187, 114, 195));
         btnDash.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnDash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dashboard.png"))); // NOI18N
         btnDash.setText("Dashboard");
         btnDash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDash.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDash.setIconTextGap(20);
         btnDash.addActionListener(this::btnDashActionPerformed);
 
         btnChatbot.setBackground(new java.awt.Color(187, 114, 195));
         btnChatbot.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnChatbot.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame (6).png"))); // NOI18N
         btnChatbot.setText("ChatBot");
         btnChatbot.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnChatbot.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnChatbot.setIconTextGap(20);
         btnChatbot.addActionListener(this::btnChatbotActionPerformed);
 
         btnCredits.setBackground(new java.awt.Color(187, 114, 195));
         btnCredits.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnCredits.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame (8).png"))); // NOI18N
         btnCredits.setText("Credits");
         btnCredits.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCredits.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCredits.setIconTextGap(20);
         btnCredits.addActionListener(this::btnCreditsActionPerformed);
 
-        btnExit.setBackground(new java.awt.Color(251, 194, 255));
+        btnExit.setBackground(new java.awt.Color(255, 102, 128));
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame (10).png"))); // NOI18N
         btnExit.setText("Exit");
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnExit.setIconTextGap(20);
         btnExit.addActionListener(this::btnExitActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -446,8 +466,19 @@ public class DashboardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditsActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExitActionPerformed
+// 1. Show the Confirm Dialog
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(
+            this, 
+            "Are you sure you want to exit the quiz?", 
+            "Confirm Exit", 
+            javax.swing.JOptionPane.YES_NO_OPTION,
+            javax.swing.JOptionPane.QUESTION_MESSAGE
+    );
+
+    // 2. Check the user's choice
+    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+        System.exit(0);
+    }    }//GEN-LAST:event_btnExitActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         if (jToggleButton1.isSelected()) {
