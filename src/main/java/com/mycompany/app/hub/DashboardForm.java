@@ -33,7 +33,7 @@ public class DashboardForm extends javax.swing.JFrame {
     public DashboardForm() {
         initComponents();
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-        currentPanel = jPanel4;
+        currentPanel = jPanel6;
         initCustomFont();
     }
     
@@ -49,10 +49,14 @@ public class DashboardForm extends javax.swing.JFrame {
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(myFont);
-
-        logoutBtn.setFont(myFont.deriveFont(Font.PLAIN, 20f));
-        quizBtn.setFont(myFont.deriveFont(Font.PLAIN, 20f));
-        dataBtn.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+ 
+        btnChatbot.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        btnCredits.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        btnDash.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        btnQuiz.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        btnData.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        btnExit.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        btnLogout.setFont(myFont.deriveFont(Font.PLAIN, 20f));
         
         
     } catch (FontFormatException e) {
@@ -70,11 +74,11 @@ public class DashboardForm extends javax.swing.JFrame {
     public JPanel currentPanel;
     public void switchPanel(JPanel pnlAdd)
     {
-        jPanel1.remove(currentPanel);
-        jPanel1.add(pnlAdd);
+        jPanel4.remove(currentPanel);
+        jPanel4.add(pnlAdd);
         currentPanel = pnlAdd;
-        jPanel1.revalidate();
-        jPanel1.repaint();
+        jPanel4.revalidate();
+        jPanel4.repaint();
     }
     
     class jPanelGradient extends JPanel {
@@ -166,6 +170,41 @@ public class DashboardForm extends javax.swing.JFrame {
             });
         }
         
+        public RoundedButton(String text, int radius, Color color)
+        {
+            super(text);
+            normalColor = color;
+            this.radius = radius;
+            this.originalTextColor = Color.WHITE;
+            
+            setContentAreaFilled(false);
+            setFocusPainted(false);
+            setBorderPainted(false);
+            setOpaque(false);
+            
+            setBackground(normalColor);
+            setForeground(originalTextColor);
+            
+            addMouseListener(new MouseAdapter() 
+            {
+                @Override
+                public void mouseEntered(MouseEvent e)
+                {
+                    if (!isEnabled()) return;
+                    setBackground(hoverColor);
+                    setForeground(normalColor);
+                }
+                
+                @Override
+                public void mouseExited(MouseEvent e)
+                {
+                    if (!isEnabled()) return;
+                    setBackground(normalColor);
+                    setForeground(originalTextColor);
+                }
+            });
+        }
+        
         @Override
         protected void paintComponent(Graphics g)
         {
@@ -201,10 +240,17 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new jPanelGradient();
         jPanel3 = new RoundedPanel(50);
-        quizBtn = new RoundedButton("Quiz Game",30);
-        dataBtn = new RoundedButton("Data Charts",30);
-        logoutBtn = new RoundedButton("Quiz Game",30);
+        btnQuiz = new RoundedButton("Quiz Game",30);
+        btnData = new RoundedButton("Data Charts",30);
+        btnLogout = new RoundedButton("Quiz Game",30);
+        btnDash = new RoundedButton("Quiz Game",30);
+        btnChatbot = new RoundedButton("Quiz Game",30);
+        btnCredits = new RoundedButton("Data Charts",30);
+        btnExit = new RoundedButton("Exit",30, new Color(251,194,255));
         jPanel4 = new RoundedPanel(50);
+        jPanel6 = new javax.swing.JPanel();
+        jPanel5 = new RoundedPanel(50);
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -216,26 +262,50 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jPanel1.setLayout(new java.awt.BorderLayout(20, 20));
 
-        jPanel3.setBackground(new java.awt.Color(102, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(251, 194, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(250, 0));
 
-        quizBtn.setBackground(new java.awt.Color(187, 114, 195));
-        quizBtn.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
-        quizBtn.setText("Quiz Game");
-        quizBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        quizBtn.addActionListener(this::quizBtnActionPerformed);
+        btnQuiz.setBackground(new java.awt.Color(187, 114, 195));
+        btnQuiz.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnQuiz.setText("Quiz Game");
+        btnQuiz.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnQuiz.addActionListener(this::btnQuizActionPerformed);
 
-        dataBtn.setBackground(new java.awt.Color(187, 114, 195));
-        dataBtn.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
-        dataBtn.setText(" Data Charts");
-        dataBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        dataBtn.addActionListener(this::dataBtnActionPerformed);
+        btnData.setBackground(new java.awt.Color(187, 114, 195));
+        btnData.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnData.setText(" Data Charts");
+        btnData.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnData.addActionListener(this::btnDataActionPerformed);
 
-        logoutBtn.setBackground(new java.awt.Color(187, 114, 195));
-        logoutBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        logoutBtn.setText("Logout");
-        logoutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        logoutBtn.addActionListener(this::logoutBtnActionPerformed);
+        btnLogout.setBackground(new java.awt.Color(187, 114, 195));
+        btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogout.addActionListener(this::btnLogoutActionPerformed);
+
+        btnDash.setBackground(new java.awt.Color(187, 114, 195));
+        btnDash.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnDash.setText("Dashboard");
+        btnDash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDash.addActionListener(this::btnDashActionPerformed);
+
+        btnChatbot.setBackground(new java.awt.Color(187, 114, 195));
+        btnChatbot.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnChatbot.setText("ChatBot");
+        btnChatbot.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnChatbot.addActionListener(this::btnChatbotActionPerformed);
+
+        btnCredits.setBackground(new java.awt.Color(187, 114, 195));
+        btnCredits.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnCredits.setText("Credits");
+        btnCredits.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCredits.addActionListener(this::btnCreditsActionPerformed);
+
+        btnExit.setBackground(new java.awt.Color(251, 194, 255));
+        btnExit.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnExit.setText("Exit");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExit.addActionListener(this::btnExitActionPerformed);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -244,39 +314,81 @@ public class DashboardForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quizBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChatbot, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDash, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnData, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(175, 175, 175)
-                .addComponent(quizBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 417, Short.MAX_VALUE)
-                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(108, 108, 108)
+                .addComponent(btnDash, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnChatbot, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnData, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.WEST);
 
         jPanel4.setBackground(new java.awt.Color(102, 0, 102));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        jPanel4.setLayout(new java.awt.BorderLayout(20, 20));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 831, Short.MAX_VALUE)
+        jPanel6.setBackground(new java.awt.Color(255, 102, 255));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 791, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 641, Short.MAX_VALUE)
         );
+
+        jPanel4.add(jPanel6, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel4, java.awt.BorderLayout.CENTER);
+
+        jPanel5.setBackground(new java.awt.Color(251, 194, 255));
+        jPanel5.setPreferredSize(new java.awt.Dimension(1101, 50));
+
+        jLabel3.setText("Welcome Mango, Graham");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(518, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(445, 445, 445))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -285,7 +397,7 @@ public class DashboardForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
+    private void btnQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizActionPerformed
         // TODO add your handling code here:
         //quizPanel quiz = new quizPanel();
         //switchPanel(quiz);
@@ -293,20 +405,36 @@ public class DashboardForm extends javax.swing.JFrame {
         quizMainPanel quizMain = new quizMainPanel();
         switchPanel(quizMain);
         currentPanel = quizMain;
-    }//GEN-LAST:event_quizBtnActionPerformed
+    }//GEN-LAST:event_btnQuizActionPerformed
 
-    private void dataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBtnActionPerformed
+    private void btnDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataActionPerformed
         // TODO add your handling code here:
         DataVisualization data = new DataVisualization();
         switchPanel(data);
         currentPanel = data;
-    }//GEN-LAST:event_dataBtnActionPerformed
+    }//GEN-LAST:event_btnDataActionPerformed
 
-    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         LoginForm frm = new LoginForm();
         frm.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_logoutBtnActionPerformed
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDashActionPerformed
+
+    private void btnChatbotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatbotActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnChatbotActionPerformed
+
+    private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCreditsActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,12 +462,19 @@ public class DashboardForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton dataBtn;
+    public javax.swing.JButton btnChatbot;
+    private javax.swing.JButton btnCredits;
+    public javax.swing.JButton btnDash;
+    private javax.swing.JButton btnData;
+    public javax.swing.JButton btnExit;
+    public javax.swing.JButton btnLogout;
+    public javax.swing.JButton btnQuiz;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public javax.swing.JPanel jPanel4;
-    public javax.swing.JButton logoutBtn;
-    public javax.swing.JButton quizBtn;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables
 }
