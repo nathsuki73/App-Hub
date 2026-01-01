@@ -11,13 +11,18 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 
 /**
  *
@@ -30,9 +35,30 @@ public class DashboardPanel extends javax.swing.JPanel {
      */
     public DashboardPanel() {
         initComponents();
+        StartTime();
         initCustomFont();
+        
+        
+        
     }
 
+        // Inside your class or JFrame constructor
+    SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm"); // e.g., 02:45:12
+    SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMM dd, yyyy"); // e.g., Friday, Jan 02, 2026
+
+    private void StartTime() {
+        // Timer to update every 1 second (1000 ms)
+        Timer timer = new Timer(1000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Date now = new Date();
+            jLabel9.setText(timeFormat.format(now)); // live time
+            jLabel10.setText(dateFormat.format(now)); // live date
+        }
+    });
+    timer.start();
+    }
+    
     public void initCustomFont() {
     try {
         InputStream is = getClass().getResourceAsStream("/fonts/inter.ttf"); 
@@ -324,11 +350,11 @@ public class DashboardPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
                         .addGap(40, 40, 40))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -526,7 +552,7 @@ public class DashboardPanel extends javax.swing.JPanel {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(1026, Short.MAX_VALUE))
+                .addContainerGap(1173, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
