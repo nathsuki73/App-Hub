@@ -145,7 +145,7 @@ public class quizMainPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         nextBtn = new RoundedButton("NEXT", 30);
 
-        setBackground(new java.awt.Color(104, 38, 108));
+        setBackground(new java.awt.Color(102, 0, 102));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 255));

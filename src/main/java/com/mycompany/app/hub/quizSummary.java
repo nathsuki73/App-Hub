@@ -241,7 +241,7 @@ public class quizSummary extends javax.swing.JPanel {
         lblQuestion18 = new javax.swing.JLabel();
         exitBtn = new RoundedButton("EXIT", 30);
 
-        setBackground(new java.awt.Color(104, 38, 108));
+        setBackground(new java.awt.Color(102, 0, 102));
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
