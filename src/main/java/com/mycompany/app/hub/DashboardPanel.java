@@ -30,7 +30,6 @@ public class DashboardPanel extends javax.swing.JPanel {
      */
     public DashboardPanel() {
         initComponents();
-        jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
         initCustomFont();
     }
 
@@ -46,8 +45,18 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(myFont);
+        
+        jLabel9.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel10.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel11.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel14.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel17.setHorizontalAlignment(SwingConstants.CENTER);
+
+        
         jLabel1.setFont(myFont.deriveFont(Font.BOLD ,32f));
-        jLabel6.setFont(myFont.deriveFont(Font.PLAIN ,24f));
+        jLabel6.setFont(myFont.deriveFont(Font.PLAIN ,20f));
         jLabel9.setFont(myFont.deriveFont(Font.BOLD ,72f));
         jLabel10.setFont(myFont.deriveFont(Font.PLAIN ,24f));
         jLabel2.setFont(myFont.deriveFont(Font.BOLD ,24f));
@@ -62,6 +71,19 @@ public class DashboardPanel extends javax.swing.JPanel {
         jLabel13.setFont(myFont.deriveFont(Font.PLAIN ,12f));
         jLabel16.setFont(myFont.deriveFont(Font.PLAIN ,12f));
         
+        
+        jLabel6.setText(
+    "<html>" +
+    "This Java-based application demonstrates core programming concepts,<br>" +
+    "user interaction, and problem-solving in an organized system.<br><br>" +
+    "It integrates learning, assistance, and monitoring tools with<br>" +
+    "secure login, access-based interaction, and a user-friendly interface.<br><br>" +
+    "Developed for the CSST101 group project, it applies object-oriented<br>" +
+    "programming, conditional logic, and GUI design in a practical way." +
+    "</html>"
+);
+
+
         
         jLabel5.setText(
     "<html>" +
@@ -79,15 +101,15 @@ public class DashboardPanel extends javax.swing.JPanel {
 );
         jLabel13.setText(
     "<html>" +
-    "Important data,<br>" +
+    "Important data, " +
     "aggressively visualized.<br>" +
     "If it looks smart, it probably is." +
     "</html>"
 );
         jLabel16.setText(
     "<html>" +
-    "Meet the legends, gremlins,<br>" +
-    "and caffeine-powered humans<br>" +
+    "Meet the squad, crammerists, " +
+    "and caffeine-powered pips " +
     "behind this masterpiece." +
     "</html>"
 );
@@ -297,29 +319,33 @@ public class DashboardPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(549, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addGap(57, 57, 57))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)
+                        .addGap(47, 47, 47))))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -500,7 +526,7 @@ public class DashboardPanel extends javax.swing.JPanel {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(765, Short.MAX_VALUE))
+                .addContainerGap(1026, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
