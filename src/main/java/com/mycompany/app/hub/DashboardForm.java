@@ -454,6 +454,9 @@ public class DashboardForm extends javax.swing.JFrame {
 
     private void btnDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashActionPerformed
         jLabel3.setText("Dashboard");
+        DashboardPanel data = new DashboardPanel();
+        switchPanel(data);
+        currentPanel = data;
     }//GEN-LAST:event_btnDashActionPerformed
 
     private void btnChatbotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatbotActionPerformed
