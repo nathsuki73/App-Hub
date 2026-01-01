@@ -16,7 +16,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,6 +52,15 @@ public class quizSummary extends javax.swing.JPanel {
         lblPreviews.add(lbl16);
         lblPreviews.add(lbl17);
         initCustomFont();
+        //jLabel4.setText(LoginSecurity.currentUser.getFirstName());
+        //displayRanking();
+        rank1.setVisible(false);
+        rank2.setVisible(false);
+        rank3.setVisible(false);
+        rank4.setVisible(false);
+        rank5.setVisible(false);
+        rank6.setVisible(false);
+        displayRanking();
     }
     public ArrayList<JLabel> lblPreviews = new ArrayList<JLabel>();
     
@@ -156,6 +167,74 @@ public class quizSummary extends javax.swing.JPanel {
         }
     }
     
+    public void displayRanking()
+    {
+//        try {
+//        // 1. Check if the user is null
+//        if (LoginSecurity.currentUser == null) {
+//            System.out.println("Wait! No user is logged in.");
+//            rank1.setText("Guest"); 
+//            return; // Stop here so the rest of the code doesn't crash
+//        }
+//
+//        // 2. Set the name safely
+//        rank1.setText(LoginSecurity.currentUser.getFirstName()); 
+//
+//        // 3. Check if your leaderboard collection exists
+//        if (quizPanel.leaderboards != null && !quizPanel.leaderboards.isEmpty()) {
+//            // Sort and display icons...
+//        }
+//        
+//    } catch (Exception e) {
+//        // This prints the error to the console instead of crashing the app
+//        System.err.println("Error in displayRanking: " + e.getMessage());
+//    }
+        quizPanel.leaderboards.sort((e1, e2) -> Integer.compare(e2.getScore(), e1.getScore()));
+        JLabel[] nameLabels = {rank1, rank2, rank3, rank4, rank5, rank6};
+        URL goldURL = getClass().getResource("/gold.png"); 
+        URL silverURL = getClass().getResource("/silver.png"); 
+        URL bronzeURL = getClass().getResource("/bronze.png"); 
+        URL plainURL = getClass().getResource("/plain.png"); 
+        ImageIcon gold = (goldURL != null) ? new ImageIcon(goldURL) : null;
+        ImageIcon silver = (silverURL != null) ? new ImageIcon(silverURL) : null;
+        ImageIcon bronze = (bronzeURL != null) ? new ImageIcon(bronzeURL) : null;
+        ImageIcon plain = (plainURL != null) ? new ImageIcon(plainURL) : null;
+        
+        for (int i = 0; i < Math.min(nameLabels.length, quizPanel.leaderboards.size()); i++)
+        {
+            quizPanel.ScoreEntry entry = quizPanel.leaderboards.get(i);
+            if (i == 0)
+            {
+                nameLabels[i].setIcon(gold);
+                nameLabels[i].setVisible(true);
+            }
+            else if (i == 1)
+            {
+                nameLabels[i].setIcon(silver);
+                nameLabels[i].setVisible(true);
+            }
+            else if (i == 2)
+            {
+                nameLabels[i].setIcon(bronze);
+                nameLabels[i].setVisible(true);
+            }
+            else
+            {
+                nameLabels[i].setIcon(plain);
+            }
+            
+            nameLabels[i].setText(entry.getUsername());
+            
+            if (nameLabels[i].getText() != "jLabel4")
+            {
+                nameLabels[i].setVisible(true);
+            }
+            
+        }
+        
+        
+    }
+    
     public void initCustomFont()
     {
        try
@@ -193,6 +272,14 @@ public class quizSummary extends javax.swing.JPanel {
            lbl15.setFont(myFont.deriveFont(Font.BOLD, 36f));
            lbl16.setFont(myFont.deriveFont(Font.BOLD, 36f));
            lbl17.setFont(myFont.deriveFont(Font.BOLD, 36f));
+           rank1.setFont(myFont.deriveFont(Font.BOLD, 36f));
+           rank2.setFont(myFont.deriveFont(Font.BOLD, 36f));
+           rank3.setFont(myFont.deriveFont(Font.BOLD, 36f));
+           rank4.setFont(myFont.deriveFont(Font.BOLD, 36f));
+           rank5.setFont(myFont.deriveFont(Font.BOLD, 36f));
+           rank6.setFont(myFont.deriveFont(Font.BOLD, 36f));
+           lblNote.setFont(myFont.deriveFont(Font.PLAIN, 22f));
+           
        }
        catch (FontFormatException e)
        {
@@ -240,6 +327,13 @@ public class quizSummary extends javax.swing.JPanel {
         lblQuestion2 = new javax.swing.JLabel();
         lblQuestion18 = new javax.swing.JLabel();
         exitBtn = new RoundedButton("EXIT", 30);
+        rank1 = new javax.swing.JLabel();
+        rank2 = new javax.swing.JLabel();
+        rank3 = new javax.swing.JLabel();
+        rank4 = new javax.swing.JLabel();
+        rank5 = new javax.swing.JLabel();
+        rank6 = new javax.swing.JLabel();
+        lblNote = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 0, 102));
 
@@ -428,6 +522,28 @@ public class quizSummary extends javax.swing.JPanel {
         exitBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitBtn.addActionListener(this::exitBtnActionPerformed);
 
+        rank1.setForeground(new java.awt.Color(204, 204, 255));
+        rank1.setText("jLabel4");
+
+        rank2.setForeground(new java.awt.Color(204, 204, 255));
+        rank2.setText("jLabel4");
+
+        rank3.setForeground(new java.awt.Color(204, 204, 255));
+        rank3.setText("jLabel4");
+
+        rank4.setForeground(new java.awt.Color(204, 204, 255));
+        rank4.setText("jLabel4");
+
+        rank5.setForeground(new java.awt.Color(204, 204, 255));
+        rank5.setText("jLabel4");
+
+        rank6.setForeground(new java.awt.Color(204, 204, 255));
+        rank6.setText("jLabel4");
+
+        lblNote.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblNote.setForeground(new java.awt.Color(204, 204, 255));
+        lblNote.setText("Note: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -436,41 +552,61 @@ public class quizSummary extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblScore, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblQuestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(269, 269, 269)
-                                .addComponent(lblQuestion18)))
-                        .addContainerGap(356, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16))))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblScore, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblQuestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNote, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(exitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(lblQuestion18)
+                    .addComponent(rank1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rank2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rank3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rank4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rank5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rank6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(lblScore)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblRemarks)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblQuestion2)
-                    .addComponent(lblQuestion18))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblScore)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblRemarks))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(lblQuestion18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblNote)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblQuestion2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rank1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rank2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rank3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rank4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rank5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rank6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21))))
         );
@@ -513,9 +649,16 @@ public class quizSummary extends javax.swing.JPanel {
     private javax.swing.JLabel lbl7;
     private javax.swing.JLabel lbl8;
     private javax.swing.JLabel lbl9;
+    public javax.swing.JLabel lblNote;
     private javax.swing.JLabel lblQuestion18;
     private javax.swing.JLabel lblQuestion2;
     private javax.swing.JLabel lblRemarks;
     private javax.swing.JLabel lblScore;
+    private javax.swing.JLabel rank1;
+    private javax.swing.JLabel rank2;
+    private javax.swing.JLabel rank3;
+    private javax.swing.JLabel rank4;
+    private javax.swing.JLabel rank5;
+    private javax.swing.JLabel rank6;
     // End of variables declaration//GEN-END:variables
 }

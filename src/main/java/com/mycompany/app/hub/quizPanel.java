@@ -48,6 +48,9 @@ public class quizPanel extends javax.swing.JPanel {
         updateTimer();
         allButtons = new JRadioButton[]{opt1, opt2, opt3, opt4};
         optionDesign();
+        leaderboards.add(new ScoreEntry("computer", 9));
+        leaderboards.add(new ScoreEntry("AI", 17));
+        leaderboards.add(new ScoreEntry("bot", 16));
         //setOpaque(false);
     }
     
@@ -61,6 +64,24 @@ public class quizPanel extends javax.swing.JPanel {
     private int score = 0;
     private Timer t = new Timer(100, e -> updateTimer());
     private ArrayList<Color> preview = new ArrayList<>();
+    //private ArrayList<String> activeUsers;
+    //private ArrayList<Integer> activeScores;
+    public static ArrayList<ScoreEntry> leaderboards = new ArrayList<>();
+    
+    public class ScoreEntry
+    {
+        String userName;
+        int score;
+        
+        public ScoreEntry(String userName, int score)
+        {
+            this.userName = userName;
+            this.score = score;
+        }
+        
+        public int getScore() {return score;}
+        public String getUsername() {return userName;}
+    }
     
     private void generateButtonGroup()
     {
@@ -441,18 +462,22 @@ public class quizPanel extends javax.swing.JPanel {
         if (score <= 17 && score >= 14)
         {
             summary.setResults("Excellent!", score, preview);
+            summary.lblNote.setText("Outstanding! You’ve grasped and mastered every concept in this mathematics quiz.");
         }
         else if (score < 14 && score >= 10)
         {
             summary.setResults("Very Good!", score, preview);
+            summary.lblNote.setText("Great job! You have a very strong understanding of the subject.");
         }
         else if (score < 10 && score > 6)
         {
             summary.setResults("Fair", score, preview);
+            summary.lblNote.setText("Solid effort, though some topics still require a bit more study.");
         }
         else if (score < 6 && score >= 0)
         {
             summary.setResults("Failed", score, preview);
+            summary.lblNote.setText("Keep practicing! Take some time to review the subject before retaking the quiz.");
         }
         
         
@@ -606,8 +631,10 @@ public class quizPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (currentIndex == 16)
         {
+            leaderboards.add(new ScoreEntry(LoginSecurity.currentUser.getFirstName(), score));
             t.stop();
             goToSummary();
+            score = 0;
         }
         
         for (JRadioButton j : allButtons)

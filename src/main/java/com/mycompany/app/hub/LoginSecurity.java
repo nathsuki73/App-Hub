@@ -17,6 +17,11 @@ public class LoginSecurity {
     public static class User {
         private String firstName, lastName, email, password;
         private int accessLevel;
+        
+        public String getFirstName()
+        {
+            return firstName;
+        }
 
         public User(String firstName, String lastName, String email, String password, int accessLevel) {
             this.firstName = firstName;
@@ -30,6 +35,8 @@ public class LoginSecurity {
         public String getEmail() { return email; }
         public String getPassword() { return password; }
     }
+    
+    public static User currentUser;
 
     private static ArrayList<User> users = new ArrayList<>();
 

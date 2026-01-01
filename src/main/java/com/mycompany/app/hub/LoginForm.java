@@ -392,6 +392,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         LoginSecurity.User loggedInUser = login.login(txtEmail.getText(), new String(jPasswordField1.getPassword()));
         if (loggedInUser != null) {
+            LoginSecurity.currentUser = loggedInUser;
             DashboardForm dashboard = new DashboardForm();
             dashboard.setVisible(true);
             this.setVisible(false);
