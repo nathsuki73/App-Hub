@@ -61,7 +61,7 @@ public class quizPanel extends javax.swing.JPanel {
     private int currentIndex = 0;
     private int timeRemain = 11;
     private double preciseTime = 10.0;
-    private int score = 0;
+    public int score = 0;
     private Timer t = new Timer(100, e -> updateTimer());
     private ArrayList<Color> preview = new ArrayList<>();
     //private ArrayList<String> activeUsers;

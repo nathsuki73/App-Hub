@@ -326,7 +326,7 @@ public class quizSummary extends javax.swing.JPanel {
         lblScore = new javax.swing.JLabel();
         lblQuestion2 = new javax.swing.JLabel();
         lblQuestion18 = new javax.swing.JLabel();
-        exitBtn = new RoundedButton("EXIT", 30);
+        restartBtn = new RoundedButton("EXIT", 30);
         rank1 = new javax.swing.JLabel();
         rank2 = new javax.swing.JLabel();
         rank3 = new javax.swing.JLabel();
@@ -513,14 +513,14 @@ public class quizSummary extends javax.swing.JPanel {
         lblQuestion18.setForeground(new java.awt.Color(204, 204, 255));
         lblQuestion18.setText("Leaderboard");
 
-        exitBtn.setBackground(new java.awt.Color(204, 0, 204));
-        exitBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        exitBtn.setForeground(new java.awt.Color(204, 204, 255));
-        exitBtn.setText("EXIT");
-        exitBtn.setBorder(null);
-        exitBtn.setBorderPainted(false);
-        exitBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        exitBtn.addActionListener(this::exitBtnActionPerformed);
+        restartBtn.setBackground(new java.awt.Color(204, 0, 204));
+        restartBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        restartBtn.setForeground(new java.awt.Color(204, 204, 255));
+        restartBtn.setText("RESTART");
+        restartBtn.setBorder(null);
+        restartBtn.setBorderPainted(false);
+        restartBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        restartBtn.addActionListener(this::restartBtnActionPerformed);
 
         rank1.setForeground(new java.awt.Color(204, 204, 255));
         rank1.setText("jLabel4");
@@ -561,7 +561,7 @@ public class quizSummary extends javax.swing.JPanel {
                     .addComponent(lblNote, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(exitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(restartBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                     .addComponent(lblQuestion18)
                     .addComponent(rank1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(rank2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -595,6 +595,7 @@ public class quizSummary extends javax.swing.JPanel {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42))
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rank1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(rank2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -606,30 +607,28 @@ public class quizSummary extends javax.swing.JPanel {
                         .addComponent(rank5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(rank6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addComponent(restartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
+    private void restartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartBtnActionPerformed
         // TODO add your handling code here:
     // 1. Get the existing Dashboard window
-    DashboardForm dash = (DashboardForm) javax.swing.SwingUtilities.getWindowAncestor(this);
+    quizPanel p = new quizPanel();
+    p.score = 0;
+    Container parent = this.getParent();
+    parent.remove(this);
+    parent.add(p);
+    parent.revalidate();
+    parent.repaint();
     
-    if (dash != null) {
-        // 2. IMPORTANT: Tell the dashboard that 'this' is the panel it needs to remove
-        dash.currentPanel = this; 
-        
-        // 3. Switch back to your main dashboard subpanel (jPanel4)
-        dash.switchPanel(dash.jPanel4); 
-    }
 
-    }//GEN-LAST:event_exitBtnActionPerformed
+    }//GEN-LAST:event_restartBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton exitBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl1;
@@ -660,5 +659,6 @@ public class quizSummary extends javax.swing.JPanel {
     private javax.swing.JLabel rank4;
     private javax.swing.JLabel rank5;
     private javax.swing.JLabel rank6;
+    private javax.swing.JButton restartBtn;
     // End of variables declaration//GEN-END:variables
 }
