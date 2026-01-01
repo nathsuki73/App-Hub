@@ -36,6 +36,11 @@ public class DashboardForm extends javax.swing.JFrame {
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         currentPanel = jPanel6;
         initCustomFont();
+        
+        jLabel3.setText("Dashboard");
+        DashboardPanel data = new DashboardPanel();
+        switchPanel(data);
+        currentPanel = data;
     }
     
     public void initCustomFont() {
