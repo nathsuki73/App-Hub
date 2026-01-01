@@ -53,12 +53,42 @@ public class DashboardPanel extends javax.swing.JPanel {
         jLabel2.setFont(myFont.deriveFont(Font.BOLD ,24f));
 
         jLabel4.setFont(myFont.deriveFont(Font.BOLD ,18f));
+        jLabel7.setFont(myFont.deriveFont(Font.BOLD ,18f));
+        jLabel12.setFont(myFont.deriveFont(Font.BOLD ,18f));
+        jLabel15.setFont(myFont.deriveFont(Font.BOLD ,18f));
+        
         jLabel5.setFont(myFont.deriveFont(Font.PLAIN ,12f));
+        jLabel8.setFont(myFont.deriveFont(Font.PLAIN ,12f));
+        jLabel13.setFont(myFont.deriveFont(Font.PLAIN ,12f));
+        jLabel16.setFont(myFont.deriveFont(Font.PLAIN ,12f));
+        
+        
         jLabel5.setText(
+    "<html>" +
+    "Talks back instantly, never sleeps,<br>" +
+    "and somehow always has an opinion.<br>" +
+    "Use responsibly." +
+    "</html>"
+);
+        jLabel8.setText(
     "<html>" +
     "Lift heavy numbers, drop weak guesses.<br>" +
     "Your brain may sweat.<br>" +
     "No refunds for wrong answers." +
+    "</html>"
+);
+        jLabel13.setText(
+    "<html>" +
+    "Important data,<br>" +
+    "aggressively visualized.<br>" +
+    "If it looks smart, it probably is." +
+    "</html>"
+);
+        jLabel16.setText(
+    "<html>" +
+    "Meet the legends, gremlins,<br>" +
+    "and caffeine-powered humans<br>" +
+    "behind this masterpiece." +
     "</html>"
 );
         
@@ -68,6 +98,9 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         
         btnDash.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        btnDash1.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        btnDash2.setFont(myFont.deriveFont(Font.PLAIN, 20f));
+        btnDash3.setFont(myFont.deriveFont(Font.PLAIN, 20f));
         
         
     } catch (FontFormatException e) {
@@ -221,8 +254,23 @@ public class DashboardPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new RoundedPanel(50);
+        jPanel10 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnDash1 = new RoundedButton("Quiz Game",30);
+        jLabel11 = new javax.swing.JLabel();
         jPanel5 = new RoundedPanel(50);
+        jPanel11 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        btnDash2 = new RoundedButton("Quiz Game",30);
+        jLabel14 = new javax.swing.JLabel();
         jPanel6 = new RoundedPanel(50);
+        jPanel12 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        btnDash3 = new RoundedButton("Quiz Game",30);
+        jLabel17 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -284,11 +332,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(102, 0, 102));
         jPanel8.setLayout(new java.awt.GridLayout(1, 4, 20, 0));
 
-        jPanel3.setBackground(new java.awt.Color(84, 16, 103));
+        jPanel3.setBackground(new java.awt.Color(52, 8, 69));
         jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Group 2 (1).png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Group 6.png"))); // NOI18N
         jLabel3.setVerifyInputWhenFocusTarget(false);
         jLabel3.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jPanel3.add(jLabel3, java.awt.BorderLayout.PAGE_START);
@@ -305,13 +353,13 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         jPanel7.setLayout(new java.awt.BorderLayout());
 
-        jLabel4.setBackground(new java.awt.Color(84, 16, 103));
+        jLabel4.setBackground(new java.awt.Color(52, 8, 69));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Brain Gym");
+        jLabel4.setText("The Digital Yapper 67");
         jLabel4.setOpaque(true);
         jPanel7.add(jLabel4, java.awt.BorderLayout.PAGE_START);
 
-        jLabel5.setBackground(new java.awt.Color(84, 16, 103));
+        jLabel5.setBackground(new java.awt.Color(52, 8, 69));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Description");
         jLabel5.setOpaque(true);
@@ -322,48 +370,117 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         jPanel8.add(jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(153, 255, 51));
+        jPanel4.setBackground(new java.awt.Color(84, 16, 103));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        jPanel4.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
-        );
+        jPanel10.setLayout(new java.awt.BorderLayout());
+
+        jLabel7.setBackground(new java.awt.Color(84, 16, 103));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Math Brain Gym");
+        jLabel7.setOpaque(true);
+        jPanel10.add(jLabel7, java.awt.BorderLayout.PAGE_START);
+
+        jLabel8.setBackground(new java.awt.Color(84, 16, 103));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Description");
+        jLabel8.setOpaque(true);
+        jLabel8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel10.add(jLabel8, java.awt.BorderLayout.CENTER);
+
+        jPanel4.add(jPanel10, java.awt.BorderLayout.CENTER);
+
+        btnDash1.setBackground(new java.awt.Color(187, 114, 195));
+        btnDash1.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnDash1.setText("Start");
+        btnDash1.setBorder(null);
+        btnDash1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDash1.setIconTextGap(20);
+        btnDash1.setPreferredSize(new java.awt.Dimension(48, 43));
+        btnDash1.addActionListener(this::btnDash1ActionPerformed);
+        jPanel4.add(btnDash1, java.awt.BorderLayout.PAGE_END);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Group 2 (1).png"))); // NOI18N
+        jLabel11.setVerifyInputWhenFocusTarget(false);
+        jLabel11.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel4.add(jLabel11, java.awt.BorderLayout.PAGE_START);
 
         jPanel8.add(jPanel4);
 
-        jPanel5.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel5.setBackground(new java.awt.Color(52, 8, 69));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        jPanel5.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
-        );
+        jPanel11.setLayout(new java.awt.BorderLayout());
+
+        jLabel12.setBackground(new java.awt.Color(52, 8, 69));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Fancy Squiggly Lines");
+        jLabel12.setOpaque(true);
+        jPanel11.add(jLabel12, java.awt.BorderLayout.PAGE_START);
+
+        jLabel13.setBackground(new java.awt.Color(52, 8, 69));
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Description");
+        jLabel13.setOpaque(true);
+        jLabel13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel11.add(jLabel13, java.awt.BorderLayout.CENTER);
+
+        jPanel5.add(jPanel11, java.awt.BorderLayout.CENTER);
+
+        btnDash2.setBackground(new java.awt.Color(187, 114, 195));
+        btnDash2.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnDash2.setText("Start");
+        btnDash2.setBorder(null);
+        btnDash2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDash2.setIconTextGap(20);
+        btnDash2.setPreferredSize(new java.awt.Dimension(48, 43));
+        btnDash2.addActionListener(this::btnDash2ActionPerformed);
+        jPanel5.add(btnDash2, java.awt.BorderLayout.PAGE_END);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Group 7.png"))); // NOI18N
+        jLabel14.setVerifyInputWhenFocusTarget(false);
+        jLabel14.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel5.add(jLabel14, java.awt.BorderLayout.PAGE_START);
 
         jPanel8.add(jPanel5);
 
-        jPanel6.setBackground(new java.awt.Color(102, 0, 255));
+        jPanel6.setBackground(new java.awt.Color(84, 16, 103));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        jPanel6.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
-        );
+        jPanel12.setLayout(new java.awt.BorderLayout());
+
+        jLabel15.setBackground(new java.awt.Color(84, 16, 103));
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Credit");
+        jLabel15.setOpaque(true);
+        jPanel12.add(jLabel15, java.awt.BorderLayout.PAGE_START);
+
+        jLabel16.setBackground(new java.awt.Color(84, 16, 103));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Description");
+        jLabel16.setOpaque(true);
+        jLabel16.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanel12.add(jLabel16, java.awt.BorderLayout.CENTER);
+
+        jPanel6.add(jPanel12, java.awt.BorderLayout.CENTER);
+
+        btnDash3.setBackground(new java.awt.Color(187, 114, 195));
+        btnDash3.setFont(new java.awt.Font("STFangsong", 1, 24)); // NOI18N
+        btnDash3.setText("Start");
+        btnDash3.setBorder(null);
+        btnDash3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDash3.setIconTextGap(20);
+        btnDash3.setPreferredSize(new java.awt.Dimension(48, 43));
+        btnDash3.addActionListener(this::btnDash3ActionPerformed);
+        jPanel6.add(btnDash3, java.awt.BorderLayout.PAGE_END);
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Group 8 (1).png"))); // NOI18N
+        jLabel17.setVerifyInputWhenFocusTarget(false);
+        jLabel17.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jPanel6.add(jLabel17, java.awt.BorderLayout.PAGE_START);
 
         jPanel8.add(jPanel6);
 
@@ -401,18 +518,45 @@ public class DashboardPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnDashActionPerformed
 
+    private void btnDash1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDash1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDash1ActionPerformed
+
+    private void btnDash2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDash2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDash2ActionPerformed
+
+    private void btnDash3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDash3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDash3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnDash;
+    public javax.swing.JButton btnDash1;
+    public javax.swing.JButton btnDash2;
+    public javax.swing.JButton btnDash3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
