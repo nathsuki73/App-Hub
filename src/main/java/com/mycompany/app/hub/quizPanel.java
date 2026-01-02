@@ -48,6 +48,20 @@ public class quizPanel extends javax.swing.JPanel {
         updateTimer();
         allButtons = new JRadioButton[]{opt1, opt2, opt3, opt4};
         optionDesign();
+        this.addAncestorListener(new javax.swing.event.AncestorListener() {
+    public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+        // Timer starts when the panel appears
+    }
+
+    public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+        // TIMER STOPS THE MOMENT THE PANEL IS EXITED
+        if (t != null) {
+            t.stop();
+        }
+    }
+
+    public void ancestorMoved(javax.swing.event.AncestorEvent evt) {}
+});
 //        LoginSecurity.leaderboards.add(new ScoreEntry("computer", 9));
 //        LoginSecurity.leaderboards.add(new ScoreEntry("AI", 17));
 //        LoginSecurity.leaderboards.add(new ScoreEntry("bot", 16));
@@ -86,6 +100,7 @@ public class quizPanel extends javax.swing.JPanel {
         public ArrayList<Color> getPrev() {return prev;}
     }
     
+    
     private void generateButtonGroup()
     {
         grp.add(opt1);
@@ -117,7 +132,6 @@ public class quizPanel extends javax.swing.JPanel {
         opt4.setText(q.options[3]);
         grp.clearSelection();
         timeRemain = 10;
-        lblTimer.setText("Time Left: " + timeRemain);
         preciseTime = 10.0;
         progBar.setMaximum(100);
         progBar.setValue(100);
@@ -249,7 +263,6 @@ public class quizPanel extends javax.swing.JPanel {
            
            jLabel2.setFont(myFont.deriveFont(Font.BOLD, 72f));
            lblQuestion.setFont(myFont.deriveFont(Font.PLAIN, 57f));
-           lblTimer.setFont(myFont.deriveFont(Font.BOLD, 24f));
            opt1.setFont(myFont.deriveFont(Font.PLAIN, 48f));
            opt2.setFont(myFont.deriveFont(Font.PLAIN, 48f));
            opt3.setFont(myFont.deriveFont(Font.PLAIN, 48f));
@@ -502,7 +515,6 @@ public class quizPanel extends javax.swing.JPanel {
         opt3 = new javax.swing.JRadioButton();
         opt4 = new javax.swing.JRadioButton();
         submitBtn = new RoundedButton("SUBMIT", 30);
-        lblTimer = new javax.swing.JLabel();
         nextBtn = new RoundedButton("NEXT", 30);
         progBar = new RoundedProgressBar();
 
@@ -555,10 +567,6 @@ public class quizPanel extends javax.swing.JPanel {
         submitBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         submitBtn.addActionListener(this::submitBtnActionPerformed);
 
-        lblTimer.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTimer.setForeground(new java.awt.Color(153, 153, 153));
-        lblTimer.setText("Time Left:");
-
         nextBtn.setBackground(new java.awt.Color(204, 0, 204));
         nextBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         nextBtn.setForeground(new java.awt.Color(204, 204, 255));
@@ -573,9 +581,7 @@ public class quizPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(lblTimer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(153, 153, 153)
                 .addComponent(progBar, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -618,15 +624,15 @@ public class quizPanel extends javax.swing.JPanel {
                     .addComponent(opt4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(progBar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(9, 9, 9))
-                        .addComponent(lblTimer, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(progBar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -766,7 +772,6 @@ public class quizPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblQuestion;
-    private javax.swing.JLabel lblTimer;
     private javax.swing.JButton nextBtn;
     private javax.swing.JRadioButton opt1;
     private javax.swing.JRadioButton opt2;
