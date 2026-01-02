@@ -441,6 +441,9 @@ public class DashboardForm extends javax.swing.JFrame {
         quizMainPanel quizMain = new quizMainPanel();
         switchPanel(quizMain);
         currentPanel = quizMain;
+        
+        jToggleButton1.setSelected(true);
+        jPanel3.setVisible(false);
     }//GEN-LAST:event_btnQuizActionPerformed
 
     private void btnDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataActionPerformed
@@ -450,6 +453,9 @@ public class DashboardForm extends javax.swing.JFrame {
         DataVisualization data = new DataVisualization();
         switchPanel(data);
         currentPanel = data;
+        
+        jToggleButton1.setSelected(true);
+        jPanel3.setVisible(false);
     }//GEN-LAST:event_btnDataActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -470,6 +476,9 @@ public class DashboardForm extends javax.swing.JFrame {
         ChatbotPanel data = new ChatbotPanel();
         switchPanel(data);
         currentPanel = data;
+        
+        jToggleButton1.setSelected(true);
+        jPanel3.setVisible(false);
     }//GEN-LAST:event_btnChatbotActionPerformed
 
     private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
@@ -477,7 +486,10 @@ public class DashboardForm extends javax.swing.JFrame {
         jLabel3.setText("Credits");
         creditsPanel credits = new creditsPanel();
         switchPanel(credits);
+        currentPanel = credits;
         
+        jToggleButton1.setSelected(true);
+        jPanel3.setVisible(false);
     }//GEN-LAST:event_btnCreditsActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
