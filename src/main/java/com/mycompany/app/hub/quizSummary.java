@@ -690,7 +690,7 @@ public class quizSummary extends javax.swing.JPanel {
     // 1. Get the existing Dashboard window
     quizPanel p = new quizPanel();
     p.score = 0;
-    p.t.stop();
+    //p.t.stop();
     String currentName = LoginSecurity.currentUser.getFirstName();
     LoginSecurity.leaderboards.removeIf(entry -> entry.getUsername().equals(currentName));
     Container parent = this.getParent();
