@@ -84,7 +84,8 @@ public class DashboardForm extends javax.swing.JFrame {
     public JPanel currentPanel;
     public void switchPanel(JPanel pnlAdd)
     {
-        jPanel4.remove(currentPanel);
+        //Panel4.remove(currentPanel);
+        jPanel4.removeAll();
         jPanel4.add(pnlAdd);
         currentPanel = pnlAdd;
         jPanel4.revalidate();
@@ -471,6 +472,10 @@ public class DashboardForm extends javax.swing.JFrame {
 
     private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
         // TODO add your handling code here:
+        jLabel3.setText("Credits");
+        creditsPanel credits = new creditsPanel();
+        switchPanel(credits);
+        
     }//GEN-LAST:event_btnCreditsActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -530,7 +535,7 @@ public class DashboardForm extends javax.swing.JFrame {
     public javax.swing.JButton btnExit;
     public javax.swing.JButton btnLogout;
     public javax.swing.JButton btnQuiz;
-    private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

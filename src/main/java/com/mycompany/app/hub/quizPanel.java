@@ -62,7 +62,7 @@ public class quizPanel extends javax.swing.JPanel {
     private int timeRemain = 11;
     private double preciseTime = 10.0;
     public int score = 0;
-    private Timer t = new Timer(100, e -> updateTimer());
+    public Timer t = new Timer(100, e -> updateTimer());
     private ArrayList<Color> preview = new ArrayList<>();
     //private ArrayList<String> activeUsers;
     //private ArrayList<Integer> activeScores;
@@ -652,6 +652,10 @@ public class quizPanel extends javax.swing.JPanel {
         opt2.setEnabled(true);
         opt3.setEnabled(true);
         opt4.setEnabled(true);
+        opt1.setForeground(new Color(204,204,255));
+        opt2.setForeground(new Color(204,204,255));
+        opt3.setForeground(new Color(204,204,255));
+        opt4.setForeground(new Color(204,204,255));
         currentIndex++;
         showQuestion(currentIndex);
         selectedButton = null;
