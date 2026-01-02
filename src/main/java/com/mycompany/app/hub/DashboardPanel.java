@@ -48,6 +48,9 @@ public class DashboardPanel extends javax.swing.JPanel {
 
     private void StartTime() {
         // Timer to update every 1 second (1000 ms)
+        Date now = new Date();
+        jLabel9.setText(timeFormat.format(now)); // live time
+        jLabel10.setText(dateFormat.format(now)); // live date
         Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -72,8 +75,8 @@ public class DashboardPanel extends javax.swing.JPanel {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(myFont);
         
-        jLabel9.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel10.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel9.setHorizontalAlignment(SwingConstants.RIGHT);
+        jLabel10.setHorizontalAlignment(SwingConstants.RIGHT);
         
         jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
         jLabel11.setHorizontalAlignment(SwingConstants.CENTER);
