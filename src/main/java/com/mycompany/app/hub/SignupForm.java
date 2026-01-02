@@ -413,7 +413,7 @@ public class SignupForm extends javax.swing.JFrame {
         );
 
         jComboBox1.setBackground(new java.awt.Color(251, 194, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Access Level", "Admin", "User", "Guest" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Access Level", "Admin", "User" }));
         jComboBox1.setBorder(null);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

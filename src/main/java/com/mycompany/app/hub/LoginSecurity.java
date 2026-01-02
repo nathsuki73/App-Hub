@@ -64,6 +64,9 @@ public class LoginSecurity {
         users.add(new User(fName, lName, email, pass, level));
     }
     
+    public static void guest() {
+        currentUser = new User("Guest", "", "", "", 2);
+    }
     
     public User login(String email, String password) {
         if (attempts <= 0) {
