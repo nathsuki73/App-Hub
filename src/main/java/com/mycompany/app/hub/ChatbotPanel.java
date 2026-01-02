@@ -50,14 +50,11 @@ public class ChatbotPanel extends javax.swing.JPanel {
         });
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(5);
         initCustomFont();
-        CreateMessage(0, "Bot", "Magandang umaga! 👋 Ako ang iyong bot helper. Sobrang saya ko na nandito ka! Ano ang maitutulong ko sa iyo?");
+
+        CreateMessage(0, "Aling Mercy", "Magandang umaga! 👋 Ako ang iyong bot helper. Sobrang saya ko na nandito ka! Ano ang maitutulong ko sa iyo?");
     }
 
     public class TindahanBot {
-    // Attributes ng Chatbot
-    String botName = "TindahanBot";
-    String userName = "Customer";
-
     // Method para makuha ang sagot ng bot
     public String getResponse(String input) {
         String msg = input.toLowerCase();
@@ -269,7 +266,8 @@ public class ChatbotPanel extends javax.swing.JPanel {
     // Example: If text is wider than 400px, wrap it at 400px. Otherwise, fit to text.
     int maxWidth = 500;
     int dynamicWidth = Math.min(textPixelWidth, maxWidth);
-    JLabel lblContent = new JLabel("<html><body style='width: " + dynamicWidth + "px'>" + text + "</body></html>");
+    String timeStamp = new java.text.SimpleDateFormat(" HH:mm").format(new java.util.Date());
+    JLabel lblContent = new JLabel("<html><body style='width: " + dynamicWidth + "px'>" + text + " <span style='color: #808080; font-size: 85%;'><br> Sent on" + timeStamp + "</span>" + "</body></html>");
     pnlMessage.add(lblContent);
 
     // 4. Add components to the wrapper
@@ -466,8 +464,10 @@ public class ChatbotPanel extends javax.swing.JPanel {
     if (text.equals("Ask anything...") || text.isEmpty()) {
         // Do nothing or show a "Please type something" message
     } else {
+                LoginSecurity.User user = LoginSecurity.currentUser;
+
         // 1. Show User Message
-        CreateMessage(1, "User", text);
+        CreateMessage(1, user.getFirstName(), text);
         
         txtSearchText.setText("");
 
@@ -476,7 +476,7 @@ public class ChatbotPanel extends javax.swing.JPanel {
         String res = bot.getResponse(text);
         
         // 3. Show Bot Message
-        CreateMessage(0, "Bot", res);
+        CreateMessage(0, "Aling Mercy", res);
 
     }
         
