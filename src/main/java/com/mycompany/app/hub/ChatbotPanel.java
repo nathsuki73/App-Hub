@@ -409,6 +409,7 @@ public class ChatbotPanel extends javax.swing.JPanel {
                 txtSearchTextFocusLost(evt);
             }
         });
+        txtSearchText.addActionListener(this::txtSearchTextActionPerformed);
         jPanel1.add(txtSearchText, java.awt.BorderLayout.CENTER);
 
         jButton1.setBackground(new java.awt.Color(84, 16, 103));
@@ -467,6 +468,8 @@ public class ChatbotPanel extends javax.swing.JPanel {
     } else {
         // 1. Show User Message
         CreateMessage(1, "User", text);
+        
+        txtSearchText.setText("");
 
         // 2. Get Bot Response
         TindahanBot bot = new TindahanBot();
@@ -479,6 +482,11 @@ public class ChatbotPanel extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtSearchTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchTextActionPerformed
+        // TODO add your handling code here:
+        jButton1ActionPerformed(evt);
+    }//GEN-LAST:event_txtSearchTextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
