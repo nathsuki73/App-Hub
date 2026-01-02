@@ -37,11 +37,35 @@ public class DashboardPanel extends javax.swing.JPanel {
         initComponents();
         StartTime();
         initCustomFont();
-        
-        
-        
+        SetAccess();
     }
 
+    private void SetAccess() {
+        LoginSecurity.User user = LoginSecurity.currentUser;
+        if (user.getAccess() == 1) {
+            btnDash2.setEnabled(false);
+            jLabel13.setText(
+    "<html>" +
+    "Please change your role to unlock this feature." +
+    "</html>"
+);
+        } else if (user.getAccess() == 2) {
+            btnDash1.setEnabled(false);
+            btnDash.setEnabled(false);
+            jLabel5.setText(
+    "<html>" +
+    "Please change your role to unlock this feature." +
+    "</html>"
+);
+            jLabel8.setText(
+    "<html>" +
+    "Please change your role to unlock this feature." +
+    "</html>"
+);
+
+        }
+    }
+    
         // Inside your class or JFrame constructor
     SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm"); // e.g., 02:45:12
     SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMM dd, yyyy"); // e.g., Friday, Jan 02, 2026
@@ -100,9 +124,20 @@ public class DashboardPanel extends javax.swing.JPanel {
         jLabel13.setFont(myFont.deriveFont(Font.PLAIN ,12f));
         jLabel16.setFont(myFont.deriveFont(Font.PLAIN ,12f));
         
+        LoginSecurity.User user = LoginSecurity.currentUser;
+        String role;
+        if (user.getAccess() == 1) {
+            role = "User";
+        } else if (user.getAccess() == 2) {
+           role = "Guest";
+        } else {
+            role = "Admin";
+        }
+        jLabel1.setText("Welcome " + user.getlastName() + ", " + user.getFirstName() + "!");
         
         jLabel6.setText(
     "<html>" +
+    "Congratulations! You currently have the " + role + " role<br><br>" +
     "This Java-based application demonstrates core programming concepts,<br>" +
     "user interaction, and problem-solving in an organized system.<br><br>" +
     "It integrates learning, assistance, and monitoring tools with<br>" +
@@ -570,19 +605,31 @@ public class DashboardPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashActionPerformed
-        
+        if (DashboardForm.mainFrame instanceof DashboardForm) {
+        DashboardForm dash = (DashboardForm) DashboardForm.mainFrame;
+        dash.ChangeFeature("Quiz", new ChatbotPanel());
+        }
     }//GEN-LAST:event_btnDashActionPerformed
 
     private void btnDash1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDash1ActionPerformed
-        // TODO add your handling code here:
+        if (DashboardForm.mainFrame instanceof DashboardForm) {
+                DashboardForm dash = (DashboardForm) DashboardForm.mainFrame;
+                dash.ChangeFeature("Quiz", new quizMainPanel());
+                }
     }//GEN-LAST:event_btnDash1ActionPerformed
 
     private void btnDash2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDash2ActionPerformed
-        // TODO add your handling code here:
+        if (DashboardForm.mainFrame instanceof DashboardForm) {
+        DashboardForm dash = (DashboardForm) DashboardForm.mainFrame;
+        dash.ChangeFeature("Data Visualization", new DataVisualization());
+        }
     }//GEN-LAST:event_btnDash2ActionPerformed
 
     private void btnDash3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDash3ActionPerformed
-        // TODO add your handling code here:
+        if (DashboardForm.mainFrame instanceof DashboardForm) {
+        DashboardForm dash = (DashboardForm) DashboardForm.mainFrame;
+        dash.ChangeFeature("Credits", new creditsPanel());
+        }
     }//GEN-LAST:event_btnDash3ActionPerformed
 
 

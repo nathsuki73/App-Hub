@@ -17,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -27,7 +28,7 @@ import javax.swing.SwingConstants;
 public class DashboardForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DashboardForm.class.getName());
-
+    public static JFrame mainFrame;
     /**
      * Creates new form DashboardForm
      */
@@ -36,11 +37,24 @@ public class DashboardForm extends javax.swing.JFrame {
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         currentPanel = jPanel6;
         initCustomFont();
-        
+        mainFrame = this;
         jLabel3.setText("Dashboard");
         DashboardPanel data = new DashboardPanel();
         switchPanel(data);
         currentPanel = data;
+        
+        SetAccess();
+    }
+    
+    private void SetAccess() {
+        LoginSecurity.User user = LoginSecurity.currentUser;
+        if (user.getAccess() == 1) {
+            btnData.setEnabled(false);
+        } else if (user.getAccess() == 2) {
+            btnQuiz.setEnabled(false);
+            btnChatbot.setEnabled(false);
+
+        }
     }
     
     public void initCustomFont() {
@@ -90,6 +104,16 @@ public class DashboardForm extends javax.swing.JFrame {
         currentPanel = pnlAdd;
         jPanel4.revalidate();
         jPanel4.repaint();
+    }
+    
+    public void ChangeFeature(String text, JPanel data) {
+        jLabel3.setText(text);
+        
+        switchPanel(data);
+        currentPanel = data;
+        
+        jToggleButton1.setSelected(true);
+        jPanel3.setVisible(false);
     }
     
     class jPanelGradient extends JPanel {

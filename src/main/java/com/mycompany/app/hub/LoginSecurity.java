@@ -22,6 +22,11 @@ public class LoginSecurity {
         {
             return firstName;
         }
+        
+        public String getlastName()
+        {
+            return lastName;
+        }
 
         public User(String firstName, String lastName, String email, String password, int accessLevel) {
             this.firstName = firstName;
@@ -34,6 +39,7 @@ public class LoginSecurity {
         // Getters
         public String getEmail() { return email; }
         public String getPassword() { return password; }
+        public int getAccess() { return accessLevel; }
     }
     
     public static User currentUser;
@@ -49,6 +55,9 @@ public class LoginSecurity {
     public LoginSecurity() {
         users.add(new User("Admin", "User", "AdminEmail", "AdminPassword", 0));
         users.add(new User("Standard", "User", "UserEmail", "UserPassword", 1));
+        users.add(new User("Bob", "Smith", "bob@email.com", "Pass456", 1));
+        users.add(new User("Jane", "Hopper", "admin@email.com", "Pass123", 2));
+        users.add(new User("Will", "the Wise", "char@email.com", "Pass789", 1));
     }
 
     public void signup(String fName, String lName, String email, String pass, int level) {
