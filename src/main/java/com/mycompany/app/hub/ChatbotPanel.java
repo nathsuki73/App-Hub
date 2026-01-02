@@ -36,16 +36,68 @@ public class ChatbotPanel extends javax.swing.JPanel {
      */
     public ChatbotPanel() {
         initComponents();
+        jScrollPane1.getVerticalScrollBar().addAdjustmentListener(new java.awt.event.AdjustmentListener() {  
+            int lastMaximum = 0;
+
+            public void adjustmentValueChanged(java.awt.event.AdjustmentEvent e) {  
+                int currentMaximum = e.getAdjustable().getMaximum();
+                // If the maximum increased, it means new content was added
+                if (currentMaximum > lastMaximum) {
+                    e.getAdjustable().setValue(currentMaximum);
+                    lastMaximum = currentMaximum;
+                }
+            }  
+        });
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(5);
         initCustomFont();
-        
-        CreateMessage();
-        CreateMessage();
-        CreateMessage();
-        CreateMessage();
-        CreateMessage();
+        CreateMessage(0, "Bot", "Magandang umaga! 👋 Ako ang iyong bot helper. Sobrang saya ko na nandito ka! Ano ang maitutulong ko sa iyo?");
     }
 
+    public class TindahanBot {
+    // Attributes ng Chatbot
+    String botName = "TindahanBot";
+    String userName = "Customer";
+
+    // Method para makuha ang sagot ng bot
+    public String getResponse(String input) {
+        String msg = input.toLowerCase();
+        
+        // Knowledge Representation gamit ang Conditional Statements (12+ Scenarios)
+        if (msg.contains("oras")) {
+            return "Buksan kami mula 10:00 AM hanggang 9:00 PM araw-araw.";
+        } else if (msg.contains("sapatos")) {
+            return "Ang mga sapatos ay nasa Ground Floor. Inirerekomenda ko ang tatak na 'Lokal'—matibay ito!";
+        } else if (msg.contains("damit") || msg.contains("suot")) {
+            return "Ang Clothing Section ay nasa 2nd Floor. May 30% discount kami sa mga t-shirt ngayon.";
+        } else if (msg.contains("sale") || msg.contains("promo")) {
+            return "Mayroon kaming Clearance Sale sa 4th floor para sa mga appliances!";
+        } else if (msg.contains("laruan")) {
+            return "Nasa 3rd Floor ang Toy Kingdom. Marami kaming bagong dating na action figures.";
+        } else if (msg.contains("makeup") || msg.contains("beauty")) {
+            return "Ang Cosmetics Section ay matatagpuan sa Ground Floor malapit sa main entrance.";
+        } else if (msg.contains("appliances") || msg.contains("tv")) {
+            return "Nasa 4th Floor ang mga appliances. Subukan niyo ang aming bagong Smart TV models.";
+        } else if (msg.contains("pagkain") || msg.contains("gutom")) {
+            return "Maaari kayong kumain sa Food Court na nasa Lower Ground Floor.";
+        } else if (msg.contains("cr") || msg.contains("banyo")) {
+            return "May banyo po kami sa likod ng bawat escalator sa bawat floor.";
+        } else if (msg.contains("bayad") || msg.contains("cashier")) {
+            return "Tumatanggap kami ng Cash, Credit Card, at GCash sa lahat ng cashier counters.";
+        } else if (msg.contains("reklamo") || msg.contains("return")) {
+            return "Mangyaring pumunta sa Customer Service counter sa Ground Floor para sa inyong concerns.";
+        } else if (msg.contains("bag") || msg.contains("luggage")) {
+            return "Ang mga travel bags ay matatagpuan sa 2nd Floor sa tabi ng Men's Accessories.";
+        } else if (msg.contains("parking")) {
+            return "Mayroon kaming malawak na parking space sa Basement 1 at 2.";
+        } else if (msg.contains("salamat")) {
+            return "Walang anuman! Masaya akong makatulong sa inyong pamimili.";
+        } else if (msg.contains("paalam") || msg.contains("bye")) {
+            return "Maraming salamat sa pagbisita sa aming Department Store! Ingat po.";
+        } else {
+            return "Paumanhin, hindi ko naintindihan. Maaari po kayong magtanong tungkol sa sapatos, damit, o sale.";
+        }
+    }
+    }
     
      class RoundedButton extends JButton {
         private int radius;
@@ -171,7 +223,7 @@ public class ChatbotPanel extends javax.swing.JPanel {
     }
 }
     
-    private void CreateMessage() {
+    private void CreateMessage(int user, String username, String msg) {
         
         
     // 1. Create the main container for this specific message
@@ -182,9 +234,16 @@ public class ChatbotPanel extends javax.swing.JPanel {
     messageWrapper.setMaximumSize(new Dimension(300, 50));
     messageWrapper.setAlignmentX(Component.LEFT_ALIGNMENT); // Keeps it pinned to the left
     // 2. First Row: The Sender/Time Label
-    JLabel lblName = new JLabel("User Name");
-    ImageIcon icon = new ImageIcon(getClass().getResource("/bot.png"));
-    lblName.setIcon(icon);
+    JLabel lblName = new JLabel(username);
+    if (user == 0) {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/bot.png"));
+        lblName.setIcon(icon);
+    } else {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/user.png"));
+        lblName.setIcon(icon);
+
+    }
+    
     
     // 3. Second Row: The Message Bubble (RoundedPanel)
     // We give the RoundedPanel its own layout to center the text inside it
@@ -195,7 +254,7 @@ public class ChatbotPanel extends javax.swing.JPanel {
     // [102,0,102]
     
     
-    String text = "wrap dynamically based on the variable!";
+    String text = msg;
 
     
     // Define the max width for the text portion
@@ -359,6 +418,7 @@ public class ChatbotPanel extends javax.swing.JPanel {
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButton1.addActionListener(this::jButton1ActionPerformed);
         jPanel1.add(jButton1, java.awt.BorderLayout.EAST);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -397,6 +457,28 @@ public class ChatbotPanel extends javax.swing.JPanel {
                 this.requestFocusInWindow();
 
     }//GEN-LAST:event_messageContainerMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String text = txtSearchText.getText(); // .trim() removes accidental spaces
+
+    // USE .equals() INSTEAD OF ==
+    if (text.equals("Ask anything...") || text.isEmpty()) {
+        // Do nothing or show a "Please type something" message
+    } else {
+        // 1. Show User Message
+        CreateMessage(1, "User", text);
+
+        // 2. Get Bot Response
+        TindahanBot bot = new TindahanBot();
+        String res = bot.getResponse(text);
+        
+        // 3. Show Bot Message
+        CreateMessage(0, "Bot", res);
+
+    }
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
