@@ -37,6 +37,8 @@ public class LoginSecurity {
     }
     
     public static User currentUser;
+    
+    public static ArrayList<quizPanel.ScoreEntry> leaderboards = new ArrayList<>();
 
     private static ArrayList<User> users = new ArrayList<>();
 

@@ -418,6 +418,7 @@ public class LoginForm extends javax.swing.JFrame {
         if (txtEmail.getText().equals("Enter your email") || new String(jPasswordField1.getPassword()).equals("Enter your Password")) {
                     jLabel3.setText("Please fill all fields");
                 }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained

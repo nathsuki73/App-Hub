@@ -48,9 +48,9 @@ public class quizPanel extends javax.swing.JPanel {
         updateTimer();
         allButtons = new JRadioButton[]{opt1, opt2, opt3, opt4};
         optionDesign();
-        leaderboards.add(new ScoreEntry("computer", 9));
-        leaderboards.add(new ScoreEntry("AI", 17));
-        leaderboards.add(new ScoreEntry("bot", 16));
+//        LoginSecurity.leaderboards.add(new ScoreEntry("computer", 9));
+//        LoginSecurity.leaderboards.add(new ScoreEntry("AI", 17));
+//        LoginSecurity.leaderboards.add(new ScoreEntry("bot", 16));
         //setOpaque(false);
     }
     
@@ -66,21 +66,24 @@ public class quizPanel extends javax.swing.JPanel {
     private ArrayList<Color> preview = new ArrayList<>();
     //private ArrayList<String> activeUsers;
     //private ArrayList<Integer> activeScores;
-    public static ArrayList<ScoreEntry> leaderboards = new ArrayList<>();
+    //public static ArrayList<ScoreEntry> leaderboards = new ArrayList<>();
     
     public class ScoreEntry
     {
         String userName;
         int score;
+        private ArrayList<Color> prev;
         
-        public ScoreEntry(String userName, int score)
+        public ScoreEntry(String userName, int score, ArrayList<Color> prev)
         {
             this.userName = userName;
             this.score = score;
+            this.prev = prev;
         }
         
         public int getScore() {return score;}
         public String getUsername() {return userName;}
+        public ArrayList<Color> getPrev() {return prev;}
     }
     
     private void generateButtonGroup()
@@ -462,7 +465,7 @@ public class quizPanel extends javax.swing.JPanel {
         if (score <= 17 && score >= 14)
         {
             summary.setResults("Excellent!", score, preview);
-            summary.lblNote.setText("Outstanding! You’ve grasped and mastered every concept in this mathematics quiz.");
+            summary.lblNote.setText("Outstanding! You’ve grasped and mastered every concept of this math quiz.");
         }
         else if (score < 14 && score >= 10)
         {
@@ -613,7 +616,7 @@ public class quizPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(opt2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opt4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -631,7 +634,7 @@ public class quizPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (currentIndex == 16)
         {
-            leaderboards.add(new ScoreEntry(LoginSecurity.currentUser.getFirstName(), score));
+            LoginSecurity.leaderboards.add(new ScoreEntry(LoginSecurity.currentUser.getFirstName(), score, preview));
             t.stop();
             goToSummary();
             score = 0;
