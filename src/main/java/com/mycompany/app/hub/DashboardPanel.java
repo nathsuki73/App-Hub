@@ -75,8 +75,8 @@ public class DashboardPanel extends javax.swing.JPanel {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(myFont);
         
-        jLabel9.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel10.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel9.setHorizontalAlignment(SwingConstants.RIGHT);
+        jLabel10.setHorizontalAlignment(SwingConstants.RIGHT);
         
         jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
         jLabel11.setHorizontalAlignment(SwingConstants.CENTER);
