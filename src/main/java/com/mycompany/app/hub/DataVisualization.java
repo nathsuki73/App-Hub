@@ -106,7 +106,7 @@ public class DataVisualization extends javax.swing.JPanel {
         chartPanel.setMaximumDrawWidth(Integer.MAX_VALUE);
         chartPanel.setMinimumDrawHeight(0);
         chartPanel.setMaximumDrawHeight(Integer.MAX_VALUE);
-        chartPanel.setPreferredSize(new java.awt.Dimension(504, 200));
+        chartPanel.setPreferredSize(new java.awt.Dimension(400, 200));
 
         // 5. Inject into jPanel4
         LineChart.removeAll();
@@ -159,7 +159,7 @@ public class DataVisualization extends javax.swing.JPanel {
         chartPanel.setMaximumDrawWidth(Integer.MAX_VALUE);
         chartPanel.setMinimumDrawHeight(0);
         chartPanel.setMaximumDrawHeight(Integer.MAX_VALUE);
-        chartPanel.setPreferredSize(new java.awt.Dimension(514, 200));
+        chartPanel.setPreferredSize(new java.awt.Dimension(475, 200));
 
         // 5. Inject into jPanel8
         TrendLine.removeAll();
@@ -203,7 +203,7 @@ public class DataVisualization extends javax.swing.JPanel {
         chartPanel.setMaximumDrawHeight(Integer.MAX_VALUE);
 
         // FORCE the chart panel to take up the space of the container
-        chartPanel.setPreferredSize(new java.awt.Dimension(PieChart.getWidth(), PieChart.getHeight()));
+        chartPanel.setPreferredSize(new java.awt.Dimension(300, PieChart.getHeight()));
 
         PieChart.removeAll();
         PieChart.setLayout(new java.awt.BorderLayout());
@@ -263,7 +263,7 @@ public class DataVisualization extends javax.swing.JPanel {
         chartPanel.setMaximumDrawWidth(Integer.MAX_VALUE);
         chartPanel.setMinimumDrawHeight(0);
         chartPanel.setMaximumDrawHeight(Integer.MAX_VALUE);
-        chartPanel.setPreferredSize(new java.awt.Dimension(500, 200));
+        chartPanel.setPreferredSize(new java.awt.Dimension(400, 200));
 
         // 5. Inject into jPanel5
         AreaChart.removeAll();
@@ -340,7 +340,7 @@ public class DataVisualization extends javax.swing.JPanel {
         panel.setMaximumDrawWidth(Integer.MAX_VALUE);
         panel.setMinimumDrawHeight(0);
         panel.setMaximumDrawHeight(Integer.MAX_VALUE);
-        panel.setPreferredSize(new java.awt.Dimension(500, 400));
+        panel.setPreferredSize(new java.awt.Dimension(400, 400));
 
         return panel;
     }
@@ -395,7 +395,7 @@ public class DataVisualization extends javax.swing.JPanel {
         chartPanel.setMinimumDrawHeight(0);
         chartPanel.setMaximumDrawHeight(Integer.MAX_VALUE);
         
-        chartPanel.setPreferredSize(new java.awt.Dimension(DoughnutChart.getWidth(), DoughnutChart.getHeight()));
+        chartPanel.setPreferredSize(new java.awt.Dimension(300, DoughnutChart.getHeight()));
 
         // IMPORTANT: Point this to your target JPanel (e.g., jPanel6)
         DoughnutChart.removeAll();
@@ -460,7 +460,7 @@ public class DataVisualization extends javax.swing.JPanel {
         chartPanel.setMaximumDrawWidth(Integer.MAX_VALUE);
         chartPanel.setMinimumDrawHeight(0);
         chartPanel.setMaximumDrawHeight(Integer.MAX_VALUE);
-        chartPanel.setPreferredSize(new java.awt.Dimension(BarChart.getWidth(), 150));
+        chartPanel.setPreferredSize(new java.awt.Dimension(300, 200));
 
         // 4. Inject into jPanel3
         BarChart.removeAll();
