@@ -451,8 +451,10 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel5.add(jToggleButton1, java.awt.BorderLayout.LINE_START);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
+        jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
+        jButton2.setFocusPainted(false);
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/home hover.png"))); // NOI18N
         jButton2.addActionListener(this::jButton2ActionPerformed);
         jPanel5.add(jButton2, java.awt.BorderLayout.LINE_END);
