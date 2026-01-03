@@ -236,6 +236,7 @@ public class quizPanel extends javax.swing.JPanel {
         if (preciseTime <= 0)
         {
             t.stop();
+            preview.add(Color.RED);
             MsgAlert("Your Time is Up!", JOptionPane.ERROR_MESSAGE, "Time's Up!");
             currentIndex++;
             showQuestion(currentIndex);
