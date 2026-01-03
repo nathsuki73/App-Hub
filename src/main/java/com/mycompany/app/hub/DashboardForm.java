@@ -531,7 +531,7 @@ public class DashboardForm extends javax.swing.JFrame {
 // 1. Show the Confirm Dialog
     int confirm = javax.swing.JOptionPane.showConfirmDialog(
             this, 
-            "Are you sure you want to exit the quiz?", 
+            "Are you sure you want to exit the program?", 
             "Confirm Exit", 
             javax.swing.JOptionPane.YES_NO_OPTION,
             javax.swing.JOptionPane.QUESTION_MESSAGE
