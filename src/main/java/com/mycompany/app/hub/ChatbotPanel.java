@@ -60,7 +60,7 @@ public class ChatbotPanel extends javax.swing.JPanel {
         String msg = input.toLowerCase();
         
         // Knowledge Representation gamit ang Conditional Statements (12+ Scenarios)
-        if (msg.contains("oras")) {
+        if (msg.contains("anong oras kayo bukas?")) {
             return "Buksan kami mula 10:00 AM hanggang 9:00 PM araw-araw.";
         } else if (msg.contains("sapatos")) {
             return "Ang mga sapatos ay nasa Ground Floor. Inirerekomenda ko ang tatak na 'Lokal'—matibay ito!";
@@ -76,9 +76,9 @@ public class ChatbotPanel extends javax.swing.JPanel {
             return "Nasa 4th Floor ang mga appliances. Subukan niyo ang aming bagong Smart TV models.";
         } else if (msg.contains("pagkain") || msg.contains("gutom")) {
             return "Maaari kayong kumain sa Food Court na nasa Lower Ground Floor.";
-        } else if (msg.contains("cr") || msg.contains("banyo")) {
+        } else if (msg.contains("san ang cr") || msg.contains("banyo")) {
             return "May banyo po kami sa likod ng bawat escalator sa bawat floor.";
-        } else if (msg.contains("bayad") || msg.contains("cashier")) {
+        } else if (msg.contains("saan pede magbayad?") || msg.contains("cashier")) {
             return "Tumatanggap kami ng Cash, Credit Card, at GCash sa lahat ng cashier counters.";
         } else if (msg.contains("reklamo") || msg.contains("return")) {
             return "Mangyaring pumunta sa Customer Service counter sa Ground Floor para sa inyong concerns.";
