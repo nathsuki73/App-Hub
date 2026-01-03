@@ -536,7 +536,7 @@ public class DashboardForm extends javax.swing.JFrame {
             "Are you sure you want to exit the program?", 
             "Confirm Exit", 
             javax.swing.JOptionPane.YES_NO_OPTION,
-            javax.swing.JOptionPane.QUESTION_MESSAGE
+            javax.swing.JOptionPane.WARNING_MESSAGE
     );
 
     // 2. Check the user's choice
