@@ -5,17 +5,20 @@
 package com.mycompany.app.hub;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.LinearGradientPaint;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -286,6 +289,7 @@ public class DashboardForm extends javax.swing.JFrame {
         jPanel5 = new RoundedPanel(50);
         jLabel3 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -446,6 +450,13 @@ public class DashboardForm extends javax.swing.JFrame {
         jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
         jPanel5.add(jToggleButton1, java.awt.BorderLayout.LINE_START);
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/home hover.png"))); // NOI18N
+        jButton2.addActionListener(this::jButton2ActionPerformed);
+        jPanel5.add(jButton2, java.awt.BorderLayout.LINE_END);
+
         jPanel1.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -540,6 +551,17 @@ public class DashboardForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        DashboardPanel dash = new DashboardPanel();
+        switchPanel(dash);
+//        Container parent = this.getParent();
+//        parent.remove(this);
+//        parent.add(dash);
+//        parent.revalidate();
+//        parent.repaint();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -573,6 +595,7 @@ public class DashboardForm extends javax.swing.JFrame {
     public javax.swing.JButton btnExit;
     public javax.swing.JButton btnLogout;
     public javax.swing.JButton btnQuiz;
+    private javax.swing.JButton jButton2;
     public javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
