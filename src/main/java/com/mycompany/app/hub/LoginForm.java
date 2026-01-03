@@ -271,7 +271,6 @@ public class LoginForm extends javax.swing.JFrame {
 
         txtEmail.setBackground(new java.awt.Color(251, 194, 255));
         txtEmail.setForeground(new java.awt.Color(0, 0, 0));
-        txtEmail.setText("AdminEmail");
         txtEmail.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -320,7 +319,6 @@ public class LoginForm extends javax.swing.JFrame {
         );
 
         jPasswordField1.setBackground(new java.awt.Color(251, 194, 255));
-        jPasswordField1.setText("AdminPassword");
         jPasswordField1.setBorder(null);
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
