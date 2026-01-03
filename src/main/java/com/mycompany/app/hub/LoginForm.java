@@ -38,9 +38,9 @@ public class LoginForm extends javax.swing.JFrame {
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         initCustomFont();
-        // WARNING: Uncomment thisss after development
-//        initCustomizations();
+        initCustomizations();
         jPanel1.requestFocusInWindow();
+        
     }
     
     public void initCustomizations() {
